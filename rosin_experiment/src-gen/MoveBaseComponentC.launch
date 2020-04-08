@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+		<rosparam>
+			controller_frequency: 15
+			planner_frequency: 5
+			acc_lim_x: 2.5
+			max_vel_x: 0.3
+			obstacle_range: 8
+			inflation_radius: 0.25
+		</rosparam>
+
+
+
+	<node pkg="" type="" name="move_base" cwd="node" respawn="false" output="screen">
+	</node>
+</launch>

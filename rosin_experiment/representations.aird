@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:componentInterface="http://www.ipa.fraunhofer.de/componentInterface" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:ros="http://www.ipa.fraunhofer.de/ros" xmlns:rossystem="http://www.ipa.fraunhofer.de/rossystem" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_US5vIHmfEeqDfPK76jnstg" selectedViews="_VLMCAHmfEeqDfPK76jnstg _X0CeIHmgEeqDfPK76jnstg" version="14.3.0.201909031200">
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/common_msgs.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/ros_core.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/dynamic_reconfigure.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/move_base_msgs.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/theora_image_transport.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/controller_manager_msgs.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/nodelet.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/map_msgs.ros</semanticResources>
+    <semanticResources>platform:/resource/de.fraunhofer.ipa.ros.communication.objects/basic_msgs/control_msgs.ros</semanticResources>
+    <semanticResources>platform:/plugin/de.fraunhofer.ipa.ros/model/PrimitivesTypes.ecore</semanticResources>
+    <semanticResources>platform:/plugin/de.fraunhofer.ipa.ros/model/ros.ecore</semanticResources>
+    <semanticResources>rosnodes/move_base.ros</semanticResources>
+    <semanticResources>components/move_base.componentinterface</semanticResources>
+    <semanticResources>rosnodes/move_base2.ros</semanticResources>
+    <semanticResources>MoveBaseComponentA.rossystem</semanticResources>
+    <semanticResources>components/MoveBaseComponentA.componentinterface</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_VLMCAHmfEeqDfPK76jnstg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='component']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VUERMHmfEeqDfPK76jnstg" name="rosin_experiment" repPath="#_VSDfAHmfEeqDfPK76jnstg" changeId="26ccc6e9-9b4d-416a-8e9f-8c287c084c0f">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='component']/@ownedRepresentations[name='Artifact%20diagram']"/>
+        <target xmi:type="ros:Artifact" href="rosnodes/rosin_experiment.ros#//@package.0/@artifact.0"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_X0CeIHmgEeqDfPK76jnstg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_X2EecXmgEeqDfPK76jnstg" name="RosSystem" repPath="#_X1cMUHmgEeqDfPK76jnstg" changeId="fcbd383d-3373-4d59-9dd1-0a09bdf4b585">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']"/>
+        <target xmi:type="rossystem:RosSystem" href="MoveBaseComponentA.rossystem#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_YPPMYHmgEeqDfPK76jnstg" name="new RosSystem" repPath="#_YOzukHmgEeqDfPK76jnstg" changeId="c01c4104-6834-4fb0-a640-68c37efe2041">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']"/>
+        <target xmi:type="rossystem:RosSystem" href="MoveBaseComponentA.rossystem#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_VSDfAHmfEeqDfPK76jnstg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VT6gMHmfEeqDfPK76jnstg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_VT7HQHmfEeqDfPK76jnstg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VV5dMHmfEeqDfPK76jnstg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_VV6EQHmfEeqDfPK76jnstg" type="Sirius" element="_VSDfAHmfEeqDfPK76jnstg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_VV6EQXmfEeqDfPK76jnstg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='component']/@ownedRepresentations[name='Artifact%20diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_VSlqgHmfEeqDfPK76jnstg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='component']/@ownedRepresentations[name='Artifact%20diagram']/@defaultLayer"/>
+    <target xmi:type="ros:Artifact" href="rosnodes/rosin_experiment.ros#//@package.0/@artifact.0"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_X1cMUHmgEeqDfPK76jnstg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_X2D3YHmgEeqDfPK76jnstg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_X2D3YXmgEeqDfPK76jnstg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_X2GToHmgEeqDfPK76jnstg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_X2GToXmgEeqDfPK76jnstg" type="Sirius" element="_X1cMUHmgEeqDfPK76jnstg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_X2GTonmgEeqDfPK76jnstg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_X1dacHmgEeqDfPK76jnstg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']/@defaultLayer"/>
+    <target xmi:type="rossystem:RosSystem" href="MoveBaseComponentA.rossystem#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_YOzukHmgEeqDfPK76jnstg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_YPOlUHmgEeqDfPK76jnstg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_YPOlUXmgEeqDfPK76jnstg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_YPPMYXmgEeqDfPK76jnstg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_YPPMYnmgEeqDfPK76jnstg" type="Sirius" element="_YOzukHmgEeqDfPK76jnstg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_bLhXUHmgEeqDfPK76jnstg" type="2002" element="_bKkVEHmgEeqDfPK76jnstg">
+          <children xmi:type="notation:Node" xmi:id="_bLuLoHmgEeqDfPK76jnstg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_bLzEIHmgEeqDfPK76jnstg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_bLzEIXmgEeqDfPK76jnstg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_bLzEInmgEeqDfPK76jnstg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bLhXUXmgEeqDfPK76jnstg" fontName="Ubuntu" fontHeight="10" bold="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bLhXUnmgEeqDfPK76jnstg" x="372" y="192" width="327" height="219"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_YPPMY3mgEeqDfPK76jnstg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bKkVEHmgEeqDfPK76jnstg" name="move_base" tooltipText="">
+      <target xmi:type="componentInterface:ComponentInterface" href="MoveBaseComponentA.rossystem#//@RosComponent.0"/>
+      <semanticElements xmi:type="componentInterface:ComponentInterface" href="MoveBaseComponentA.rossystem#//@RosComponent.0"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bKtfAHmgEeqDfPK76jnstg" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1" foregroundColor="217,196,215">
+        <labelFormat>bold</labelFormat>
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']/@defaultLayer/@containerMappings[name='ComponentInterface']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']/@defaultLayer/@containerMappings[name='ComponentInterface']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_YOzukXmgEeqDfPK76jnstg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='RosSystem']/@ownedRepresentations[name='RosSystem']/@defaultLayer"/>
+    <target xmi:type="rossystem:RosSystem" href="MoveBaseComponentA.rossystem#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

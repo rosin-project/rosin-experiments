@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<node pkg="" type="" name="move_base" cwd="node" respawn="false" output="screen">
+		<param name=controller_frequency value= 20 />
+		<param name=planner_frequency value= 7.5 />
+		<param name=acc_lim_x value= 5.0 />
+		<param name=max_vel_x value= 0.5 />
+		<param name=obstacle_range value= 10 />
+		<param name=inflation_radius value= 0.35 />
+	</node>
+</launch>
