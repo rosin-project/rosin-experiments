@@ -1,0 +1,37 @@
+PackageSet{package{
+    Package gazebo_msgs{ spec { 
+      TopicSpec ContactState{ message { string info string collision1_name string collision2_name "geometry_msgs.Wrench"[] wrenches "geometry_msgs.Wrench" total_wrench "geometry_msgs.Vector3"[] contact_positions "geometry_msgs.Vector3"[] contact_normals float64[] depths }},
+      TopicSpec ContactsState{ message { Header header "gazebo_msgs.ContactState"[] states }},
+      TopicSpec LinkState{ message { string link_name "geometry_msgs.Pose" pose "geometry_msgs.Twist" twist string reference_frame }},
+      TopicSpec LinkStates{ message { string[] name "geometry_msgs.Pose"[] pose "geometry_msgs.Twist"[] twist }},
+      TopicSpec ModelState{ message { string model_name "geometry_msgs.Pose" pose "geometry_msgs.Twist" twist string reference_frame }},
+      TopicSpec ModelStates{ message { string[] name "geometry_msgs.Pose"[] pose "geometry_msgs.Twist"[] twist }},
+      TopicSpec ODEJointProperties{ message { float64[] damping float64[] hiStop float64[] loStop float64[] erp float64[] cfm float64[] stop_erp float64[] stop_cfm float64[] fudge_factor float64[] fmax float64[] vel }},
+      TopicSpec ODEPhysics{ message { bool auto_disable_bodies uint32 sor_pgs_precon_iters uint32 sor_pgs_iters float64 sor_pgs_w float64 sor_pgs_rms_error_tol float64 contact_surface_layer float64 contact_max_correcting_vel float64 cfm float64 erp uint32 max_contacts }},
+      TopicSpec WorldState{ message { Header header string[] name "geometry_msgs.Pose"[] pose "geometry_msgs.Twist"[] twist "geometry_msgs.Wrench"[] wrench }},
+      ServiceSpec ApplyBodyWrench{ request { string body_name string reference_frame "geometry_msgs.Point" reference_point "geometry_msgs.Wrench" wrench time start_time duration duration } response { bool success string status_message } },
+      ServiceSpec ApplyJointEffort{ request { string joint_name float64 effort time start_time duration duration } response { bool success string status_message } },
+      ServiceSpec BodyRequest{ request { string body_name } response {  } },
+      ServiceSpec DeleteLight{ request { string light_name } response { bool success string status_message } },
+      ServiceSpec DeleteModel{ request { string model_name } response { bool success string status_message } },
+      ServiceSpec GetJointProperties{ request { string joint_name } response { uint8 type uint8 REVOLUTE=0 uint8 CONTINUOUS=1 uint8 PRISMATIC=2 uint8 FIXED=3 uint8 BALL=4 uint8 UNIVERSAL=5 float64[] damping float64[] position float64[] rate bool success string status_message } },
+      ServiceSpec GetLightProperties{ request { string light_name } response { "std_msgs.ColorRGBA" diffuse float64 attenuation_constant float64 attenuation_linear float64 attenuation_quadratic bool success string status_message } },
+      ServiceSpec GetLinkProperties{ request { string link_name } response { "geometry_msgs.Pose" com bool gravity_mode float64 mass float64 ixx float64 ixy float64 ixz float64 iyy float64 iyz float64 izz bool success string status_message } },
+      ServiceSpec GetLinkState{ request { string link_name string reference_frame } response { "gazebo_msgs.LinkState" link_state bool success string status_message } },
+      ServiceSpec GetModelProperties{ request { string model_name } response { string parent_model_name string canonical_body_name string[] body_names string[] geom_names string[] joint_names string[] child_model_names bool is_static bool success string status_message } },
+      ServiceSpec GetModelState{ request { string model_name string relative_entity_name } response { Header header "geometry_msgs.Pose" pose "geometry_msgs.Twist" twist bool success string status_message } },
+      ServiceSpec GetPhysicsProperties{ request {  } response { float64 time_step bool pause float64 max_update_rate "geometry_msgs.Vector3" gravity "gazebo_msgs.ODEPhysics" ode_config bool success string status_message } },
+      ServiceSpec GetWorldProperties{ request {  } response { float64 sim_time string[] model_names bool rendering_enabled bool success string status_message } },
+      ServiceSpec JointRequest{ request { string joint_name } response {  } },
+      ServiceSpec SetJointProperties{ request { string joint_name "gazebo_msgs.ODEJointProperties" ode_joint_config } response { bool success string status_message } },
+      ServiceSpec SetJointTrajectory{ request { string model_name "trajectory_msgs.JointTrajectory" joint_trajectory "geometry_msgs.Pose" model_pose bool set_model_pose bool disable_physics_updates } response { bool success string status_message } },
+      ServiceSpec SetLightProperties{ request { string light_name "std_msgs.ColorRGBA" diffuse float64 attenuation_constant float64 attenuation_linear float64 attenuation_quadratic } response { bool success string status_message } },
+      ServiceSpec SetLinkProperties{ request { string link_name "geometry_msgs.Pose" com bool gravity_mode float64 mass float64 ixx float64 ixy float64 ixz float64 iyy float64 iyz float64 izz } response { bool success string status_message } },
+      ServiceSpec SetLinkState{ request { "gazebo_msgs.LinkState" link_state } response { bool success string status_message } },
+      ServiceSpec SetModelConfiguration{ request { string model_name string urdf_param_name string[] joint_names float64[] joint_positions } response { bool success string status_message } },
+      ServiceSpec SetModelState{ request { "gazebo_msgs.ModelState" model_state } response { bool success string status_message } },
+      ServiceSpec SetPhysicsProperties{ request { float64 time_step float64 max_update_rate "geometry_msgs.Vector3" gravity "gazebo_msgs.ODEPhysics" ode_config } response { bool success string status_message } },
+      ServiceSpec SpawnModel{ request { string model_name string model_xml string robot_namespace "geometry_msgs.Pose" initial_pose string reference_frame } response { bool success string status_message } }
+    }}
+  }
+}

@@ -1,0 +1,23 @@
+PackageSet{package{
+    Package geographic_msgs{ spec { 
+      TopicSpec BoundingBox{ message { GeoPoint min_pt GeoPoint max_pt }},
+      TopicSpec GeoPath{ message { "std_msgs.Header" header "geographic_msgs.GeoPoseStamped"[] poses }},
+      TopicSpec GeoPoint{ message { float64 latitude float64 longitude float64 altitude }},
+      TopicSpec GeoPointStamped{ message { Header header "geographic_msgs.GeoPoint" position }},
+      TopicSpec GeoPose{ message { GeoPoint position "geometry_msgs.Quaternion" orientation }},
+      TopicSpec GeoPoseStamped{ message { Header header "geographic_msgs.GeoPose" pose }},
+      TopicSpec GeographicMap{ message { Header header "uuid_msgs.UniqueID" id BoundingBox bounds WayPoint[] points MapFeature[] features KeyValue[] props }},
+      TopicSpec GeographicMapChanges{ message { Header header GeographicMap diffs "uuid_msgs.UniqueID"[] deletes }},
+      TopicSpec KeyValue{ message { string key string value }},
+      TopicSpec MapFeature{ message { "uuid_msgs.UniqueID" id "uuid_msgs.UniqueID"[] components KeyValue[] props }},
+      TopicSpec RouteNetwork{ message { Header header "uuid_msgs.UniqueID" id BoundingBox bounds WayPoint[] points RouteSegment[] segments KeyValue[] props }},
+      TopicSpec RoutePath{ message { Header header "uuid_msgs.UniqueID" network "uuid_msgs.UniqueID"[] segments KeyValue[] props }},
+      TopicSpec RouteSegment{ message { "uuid_msgs.UniqueID" id "uuid_msgs.UniqueID" start "uuid_msgs.UniqueID" end KeyValue[] props }},
+      TopicSpec WayPoint{ message { "uuid_msgs.UniqueID" id GeoPoint position KeyValue[] props }},
+      ServiceSpec GetGeoPath{ request { "geographic_msgs.GeoPoint" start "geographic_msgs.GeoPoint" goal } response { bool success string status "geographic_msgs.GeoPath" plan "uuid_msgs.UniqueID" network "uuid_msgs.UniqueID" start_seg "uuid_msgs.UniqueID" goal_seg float64 distance } },
+      ServiceSpec GetGeographicMap{ request { string url BoundingBox bounds } response { bool success string status GeographicMap map } },
+      ServiceSpec GetRoutePlan{ request { "uuid_msgs.UniqueID" network "uuid_msgs.UniqueID" start "uuid_msgs.UniqueID" goal } response { bool success string status RoutePath plan } },
+      ServiceSpec UpdateGeographicMap{ request { GeographicMapChanges updates } response { bool success string status } }
+    }}
+  }
+}
