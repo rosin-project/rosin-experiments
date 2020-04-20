@@ -1,0 +1,6 @@
+PackageSet{package{
+    Package uuid_msgs{ spec { 
+      TopicSpec UniqueID{ message { uint8[] uuid }}
+    }}
+  }
+}

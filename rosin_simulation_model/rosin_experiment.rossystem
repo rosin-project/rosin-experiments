@@ -1,0 +1,1014 @@
+RosSystem { Name 'system_name'
+    RosComponents ( 
+        ComponentInterface { name '/robot_state_publisher'
+            RosSubscribers {
+                RosSubscriber '/joint_states' {RefSubscriber 'package_name./robot_state_publisher./robot_state_publisher./joint_states'}}
+},
+        ComponentInterface { name '/cmd_vel_relay'
+            RosSubscribers {
+                RosSubscriber '/cmd_vel' {RefSubscriber 'package_name./cmd_vel_relay./cmd_vel_relay./cmd_vel'}}
+},
+        ComponentInterface { name '/gazebo_gui'
+},
+        ComponentInterface { name '/ekf_localization'
+            RosPublishers {
+                RosPublisher '/diagnostics' {RefPublisher 'package_name./ekf_localization./ekf_localization./diagnostics'},
+                RosPublisher '/odometry/filtered' {RefPublisher 'package_name./ekf_localization./ekf_localization./odometry/filtered'}}
+            RosSubscribers {
+                RosSubscriber '/imu/data' {RefSubscriber 'package_name./ekf_localization./ekf_localization./imu/data'},
+                RosSubscriber '/set_pose' {RefSubscriber 'package_name./ekf_localization./ekf_localization./set_pose'},
+                RosSubscriber '/ridgeback_velocity_controller/odom' {RefSubscriber 'package_name./ekf_localization./ekf_localization./ridgeback_velocity_controller/odom'}}
+            RosSrvServers {
+                RosServiceServer '/ekf_localization/enable' {RefServer 'package_name./ekf_localization./ekf_localization./ekf_localization/enable'},
+                RosServiceServer '/ekf_localization/toggle' {RefServer 'package_name./ekf_localization./ekf_localization./ekf_localization/toggle'},
+                RosServiceServer '/set_pose' {RefServer 'package_name./ekf_localization./ekf_localization./set_pose'}}
+},
+        ComponentInterface { name '/controller_spawner'
+},
+        ComponentInterface { name '/move_base'
+            RosPublishers {
+                RosPublisher '/move_base/local_costmap/obstacles_layer/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/obstacles_layer/parameter_descriptions'},
+                RosPublisher '/move_base/TrajectoryPlannerROS/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/parameter_descriptions'},
+                RosPublisher '/move_base/global_costmap/obstacles_layer/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/obstacles_layer/parameter_updates'},
+                RosPublisher '/move_base/local_costmap/costmap_updates' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/costmap_updates'},
+                RosPublisher '/move_base/global_costmap/costmap' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/costmap'},
+                RosPublisher '/move_base/NavfnROS/plan' {RefPublisher 'package_name./move_base./move_base./move_base/NavfnROS/plan'},
+                RosPublisher '/move_base/global_costmap/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/parameter_descriptions'},
+                RosPublisher '/move_base/local_costmap/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/parameter_descriptions'},
+                RosPublisher '/move_base/TrajectoryPlannerROS/local_plan' {RefPublisher 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/local_plan'},
+                RosPublisher '/move_base/global_costmap/costmap_updates' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/costmap_updates'},
+                RosPublisher '/move_base/global_costmap/obstacles_layer/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/obstacles_layer/parameter_descriptions'},
+                RosPublisher '/move_base/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/parameter_updates'},
+                RosPublisher '/move_base/TrajectoryPlannerROS/global_plan' {RefPublisher 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/global_plan'},
+                RosPublisher '/move_base/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/parameter_descriptions'},
+                RosPublisher '/move_base/local_costmap/inflater_layer/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/inflater_layer/parameter_updates'},
+                RosPublisher '/move_base/local_costmap/footprint' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/footprint'},
+                RosPublisher '/cmd_vel' {RefPublisher 'package_name./move_base./move_base./cmd_vel'},
+                RosPublisher '/move_base/current_goal' {RefPublisher 'package_name./move_base./move_base./move_base/current_goal'},
+                RosPublisher '/move_base/local_costmap/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/parameter_updates'},
+                RosPublisher '/move_base/local_costmap/obstacles_layer/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/obstacles_layer/parameter_updates'},
+                RosPublisher '/move_base/global_costmap/footprint' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/footprint'},
+                RosPublisher '/move_base/global_costmap/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/parameter_updates'},
+                RosPublisher '/move_base/TrajectoryPlannerROS/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/parameter_updates'},
+                RosPublisher '/move_base/goal' {RefPublisher 'package_name./move_base./move_base./move_base/goal'},
+                RosPublisher '/move_base/TrajectoryPlannerROS/cost_cloud' {RefPublisher 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/cost_cloud'},
+                RosPublisher '/move_base/global_costmap/inflater_layer/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/inflater_layer/parameter_descriptions'},
+                RosPublisher '/move_base/global_costmap/inflater_layer/parameter_updates' {RefPublisher 'package_name./move_base./move_base./move_base/global_costmap/inflater_layer/parameter_updates'},
+                RosPublisher '/move_base/local_costmap/inflater_layer/parameter_descriptions' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/inflater_layer/parameter_descriptions'},
+                RosPublisher '/move_base/local_costmap/costmap' {RefPublisher 'package_name./move_base./move_base./move_base/local_costmap/costmap'}}
+            RosSubscribers {
+                RosSubscriber '/odometry/filtered' {RefSubscriber 'package_name./move_base./move_base./odometry/filtered'},
+                RosSubscriber '/front/scan' {RefSubscriber 'package_name./move_base./move_base./front/scan'},
+                RosSubscriber '/move_base/global_costmap/footprint' {RefSubscriber 'package_name./move_base./move_base./move_base/global_costmap/footprint'},
+                RosSubscriber '/move_base/local_costmap/footprint' {RefSubscriber 'package_name./move_base./move_base./move_base/local_costmap/footprint'},
+                RosSubscriber '/move_base_simple/goal' {RefSubscriber 'package_name./move_base./move_base./move_base_simple/goal'}}
+            RosSrvServers {
+                RosServiceServer '/move_base/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/set_parameters'},
+                RosServiceServer '/move_base/global_costmap/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/global_costmap/set_parameters'},
+                RosServiceServer '/move_base/make_plan' {RefServer 'package_name./move_base./move_base./move_base/make_plan'},
+                RosServiceServer '/move_base/global_costmap/obstacles_layer/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/global_costmap/obstacles_layer/set_parameters'},
+                RosServiceServer '/move_base/local_costmap/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/local_costmap/set_parameters'},
+                RosServiceServer '/move_base/global_costmap/inflater_layer/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/global_costmap/inflater_layer/set_parameters'},
+                RosServiceServer '/move_base/NavfnROS/make_plan' {RefServer 'package_name./move_base./move_base./move_base/NavfnROS/make_plan'},
+                RosServiceServer '/move_base/clear_costmaps' {RefServer 'package_name./move_base./move_base./move_base/clear_costmaps'},
+                RosServiceServer '/move_base/local_costmap/obstacles_layer/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/local_costmap/obstacles_layer/set_parameters'},
+                RosServiceServer '/move_base/TrajectoryPlannerROS/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/TrajectoryPlannerROS/set_parameters'},
+                RosServiceServer '/move_base/local_costmap/inflater_layer/set_parameters' {RefServer 'package_name./move_base./move_base./move_base/local_costmap/inflater_layer/set_parameters'}}
+            RosActionServers {
+                RosActionServer '/move_base/' {RefServer 'package_name./move_base./move_base./move_base/'}}
+},
+        ComponentInterface { name '/gazebo'
+            RosPublishers {
+                RosPublisher '/mobile_base/commands/charge_level' {RefPublisher 'package_name./gazebo./gazebo./mobile_base/commands/charge_level'},
+                RosPublisher '/gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates'},
+                RosPublisher '/gazebo/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./gazebo/parameter_descriptions'},
+                RosPublisher '/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates'},
+                RosPublisher '/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions'},
+                RosPublisher '/joint_states' {RefPublisher 'package_name./gazebo./gazebo./joint_states'},
+                RosPublisher '/ridgeback_velocity_controller/odom' {RefPublisher 'package_name./gazebo./gazebo./ridgeback_velocity_controller/odom'},
+                RosPublisher '/imu/data/bias' {RefPublisher 'package_name./gazebo./gazebo./imu/data/bias'},
+                RosPublisher '/imu/data/yaw/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./imu/data/yaw/parameter_descriptions'},
+                RosPublisher '/odom' {RefPublisher 'package_name./gazebo./gazebo./odom'},
+                RosPublisher '/imu/data/accel/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./imu/data/accel/parameter_updates'},
+                RosPublisher '/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates'},
+                RosPublisher '/gazebo/link_states' {RefPublisher 'package_name./gazebo./gazebo./gazebo/link_states'},
+                RosPublisher '/gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions'},
+                RosPublisher '/front/scan' {RefPublisher 'package_name./gazebo./gazebo./front/scan'},
+                RosPublisher '/gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions'},
+                RosPublisher '/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions'},
+                RosPublisher '/gazebo/model_states' {RefPublisher 'package_name./gazebo./gazebo./gazebo/model_states'},
+                RosPublisher '/imu/data/accel/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./imu/data/accel/parameter_descriptions'},
+                RosPublisher '/imu/data' {RefPublisher 'package_name./gazebo./gazebo./imu/data'},
+                RosPublisher '/imu/data/rate/parameter_descriptions' {RefPublisher 'package_name./gazebo./gazebo./imu/data/rate/parameter_descriptions'},
+                RosPublisher '/mobile_base/commands/charge_level_mwh' {RefPublisher 'package_name./gazebo./gazebo./mobile_base/commands/charge_level_mwh'},
+                RosPublisher '/gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates'},
+                RosPublisher '/imu/data/yaw/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./imu/data/yaw/parameter_updates'},
+                RosPublisher '/gazebo/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./gazebo/parameter_updates'},
+                RosPublisher '/imu/data/rate/parameter_updates' {RefPublisher 'package_name./gazebo./gazebo./imu/data/rate/parameter_updates'}}
+            RosSubscribers {
+                RosSubscriber '/gazebo/set_model_state' {RefSubscriber 'package_name./gazebo./gazebo./gazebo/set_model_state'},
+                RosSubscriber '/ridgeback_velocity_controller/cmd_vel' {RefSubscriber 'package_name./gazebo./gazebo./ridgeback_velocity_controller/cmd_vel'},
+                RosSubscriber '/cmd_vel' {RefSubscriber 'package_name./gazebo./gazebo./cmd_vel'},
+                RosSubscriber '/gazebo/set_link_state' {RefSubscriber 'package_name./gazebo./gazebo./gazebo/set_link_state'}}
+            RosSrvServers {
+                RosServiceServer '/gazebo/set_link_state' {RefServer 'package_name./gazebo./gazebo./gazebo/set_link_state'},
+                RosServiceServer '/gazebo/set_physics_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/set_physics_properties'},
+                RosServiceServer '/gazebo/spawn_sdf_model' {RefServer 'package_name./gazebo./gazebo./gazebo/spawn_sdf_model'},
+                RosServiceServer '/gazebo/clear_joint_forces' {RefServer 'package_name./gazebo./gazebo./gazebo/clear_joint_forces'},
+                RosServiceServer '/gazebo/set_light_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/set_light_properties'},
+                RosServiceServer '/gazebo/set_model_state' {RefServer 'package_name./gazebo./gazebo./gazebo/set_model_state'},
+                RosServiceServer '/gazebo_ros_control/pid_gains/front_right_wheel/set_parameters' {RefServer 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/set_parameters'},
+                RosServiceServer '/controller_manager/list_controller_types' {RefServer 'package_name./gazebo./gazebo./controller_manager/list_controller_types'},
+                RosServiceServer '/gazebo/unpause_physics' {RefServer 'package_name./gazebo./gazebo./gazebo/unpause_physics'},
+                RosServiceServer '/controller_manager/reload_controller_libraries' {RefServer 'package_name./gazebo./gazebo./controller_manager/reload_controller_libraries'},
+                RosServiceServer '/gazebo/apply_joint_effort' {RefServer 'package_name./gazebo./gazebo./gazebo/apply_joint_effort'},
+                RosServiceServer '/controller_manager/load_controller' {RefServer 'package_name./gazebo./gazebo./controller_manager/load_controller'},
+                RosServiceServer '/controller_manager/unload_controller' {RefServer 'package_name./gazebo./gazebo./controller_manager/unload_controller'},
+                RosServiceServer '/gazebo/get_physics_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_physics_properties'},
+                RosServiceServer '/gazebo/delete_model' {RefServer 'package_name./gazebo./gazebo./gazebo/delete_model'},
+                RosServiceServer '/imu/data/set_accel_bias' {RefServer 'package_name./gazebo./gazebo./imu/data/set_accel_bias'},
+                RosServiceServer '/gazebo/get_link_state' {RefServer 'package_name./gazebo./gazebo./gazebo/get_link_state'},
+                RosServiceServer '/gazebo/get_model_state' {RefServer 'package_name./gazebo./gazebo./gazebo/get_model_state'},
+                RosServiceServer '/gazebo/get_link_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_link_properties'},
+                RosServiceServer '/gazebo/spawn_urdf_model' {RefServer 'package_name./gazebo./gazebo./gazebo/spawn_urdf_model'},
+                RosServiceServer '/imu/data/calibrate' {RefServer 'package_name./gazebo./gazebo./imu/data/calibrate'},
+                RosServiceServer '/gazebo/get_light_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_light_properties'},
+                RosServiceServer '/gazebo/get_model_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_model_properties'},
+                RosServiceServer '/gazebo/set_joint_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/set_joint_properties'},
+                RosServiceServer '/imu/data/rate/set_parameters' {RefServer 'package_name./gazebo./gazebo./imu/data/rate/set_parameters'},
+                RosServiceServer '/gazebo/clear_body_wrenches' {RefServer 'package_name./gazebo./gazebo./gazebo/clear_body_wrenches'},
+                RosServiceServer '/gazebo/set_link_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/set_link_properties'},
+                RosServiceServer '/battery_monitor_client/battery_demo_model/set_model_coefficients' {RefServer 'package_name./gazebo./gazebo./battery_monitor_client/battery_demo_model/set_model_coefficients'},
+                RosServiceServer '/gazebo/pause_physics' {RefServer 'package_name./gazebo./gazebo./gazebo/pause_physics'},
+                RosServiceServer '/battery_monitor_client/battery_demo_model/set_charging' {RefServer 'package_name./gazebo./gazebo./battery_monitor_client/battery_demo_model/set_charging'},
+                RosServiceServer '/gazebo/reset_world' {RefServer 'package_name./gazebo./gazebo./gazebo/reset_world'},
+                RosServiceServer '/imu/data/set_rate_bias' {RefServer 'package_name./gazebo./gazebo./imu/data/set_rate_bias'},
+                RosServiceServer '/imu/data/accel/set_parameters' {RefServer 'package_name./gazebo./gazebo./imu/data/accel/set_parameters'},
+                RosServiceServer '/battery_monitor_client/battery_demo_model/set_charge_rate' {RefServer 'package_name./gazebo./gazebo./battery_monitor_client/battery_demo_model/set_charge_rate'},
+                RosServiceServer '/gazebo/set_model_configuration' {RefServer 'package_name./gazebo./gazebo./gazebo/set_model_configuration'},
+                RosServiceServer '/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters' {RefServer 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters'},
+                RosServiceServer '/gazebo/reset_simulation' {RefServer 'package_name./gazebo./gazebo./gazebo/reset_simulation'},
+                RosServiceServer '/gazebo/get_world_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_world_properties'},
+                RosServiceServer '/controller_manager/switch_controller' {RefServer 'package_name./gazebo./gazebo./controller_manager/switch_controller'},
+                RosServiceServer '/battery_demo_model/set_power_load' {RefServer 'package_name./gazebo./gazebo./battery_demo_model/set_power_load'},
+                RosServiceServer '/gazebo/delete_light' {RefServer 'package_name./gazebo./gazebo./gazebo/delete_light'},
+                RosServiceServer '/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters' {RefServer 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters'},
+                RosServiceServer '/gazebo/get_joint_properties' {RefServer 'package_name./gazebo./gazebo./gazebo/get_joint_properties'},
+                RosServiceServer '/battery_monitor_client/battery_demo_model/set_charge' {RefServer 'package_name./gazebo./gazebo./battery_monitor_client/battery_demo_model/set_charge'},
+                RosServiceServer '/gazebo/set_parameters' {RefServer 'package_name./gazebo./gazebo./gazebo/set_parameters'},
+                RosServiceServer '/gazebo/apply_body_wrench' {RefServer 'package_name./gazebo./gazebo./gazebo/apply_body_wrench'},
+                RosServiceServer '/imu/data/yaw/set_parameters' {RefServer 'package_name./gazebo./gazebo./imu/data/yaw/set_parameters'},
+                RosServiceServer '/controller_manager/list_controllers' {RefServer 'package_name./gazebo./gazebo./controller_manager/list_controllers'},
+                RosServiceServer '/gazebo_ros_control/pid_gains/front_left_wheel/set_parameters' {RefServer 'package_name./gazebo./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/set_parameters'}}
+},
+        ComponentInterface { name 'parameters_node'
+            RosParameters {
+                RosParameter '/move_base/base_global_planner' {RefParameter 'package_name.parameters_node.parameters_node./move_base/base_global_planner' value 'navfn/NavfnROS'},
+                RosParameter '/ekf_localization/imu0_differential' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/imu0_differential' value false},
+                RosParameter '/move_base/local_costmap/robot_radius' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/robot_radius' value 0.46},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/i_clamp_max' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/i_clamp_max' value 0.0},
+                RosParameter '/imu/data/yaw/offset' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/yaw/offset' value 0.0},
+                RosParameter '/ridgeback_velocity_controller/linear/y/has_velocity_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/y/has_velocity_limits' value true},
+                RosParameter '/move_base/local_costmap/robot_base_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/robot_base_frame' value 'base_link'},
+                RosParameter '/move_base/recovery_behavior_enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/recovery_behavior_enabled' value true},
+                RosParameter '/move_base/local_costmap/obstacles_layer/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/obstacle_range' value 10.0},
+                RosParameter '/gazebo/sor_pgs_rms_error_tol' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/sor_pgs_rms_error_tol' value 0.0},
+                RosParameter '/move_base/local_costmap/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacle_range' value 10.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/sim_granularity' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/sim_granularity' value 0.02},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/obstacle_range' value 10.0},
+                RosParameter '/ridgeback_velocity_controller/type' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/type' value 'mecanum_drive_controller/MecanumDriveController'},
+                RosParameter '/ekf_localization/imu0_config' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/imu0_config' value {false, false, false, false, false, false, false, false, false, false, false, true, true, true, false}},
+                RosParameter '/move_base/local_costmap/z_resolution' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/z_resolution' value 1},
+                RosParameter '/move_base/TrajectoryPlannerROS/acc_lim_y' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/acc_lim_y' value 10.0},
+                RosParameter '/ridgeback_velocity_controller/back_right_wheel_joint' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/back_right_wheel_joint' value 'rear_right_wheel'},
+                RosParameter '/move_base/local_costmap/global_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/global_frame' value 'odom'},
+                RosParameter '/move_base/TrajectoryPlannerROS/escape_reset_theta' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/escape_reset_theta' value 0.1},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/marking' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/marking' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/publish_cost_grid_pc' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/publish_cost_grid_pc' value true},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/data_type' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/data_type' value 'LaserScan'},
+                RosParameter '/ridgeback_velocity_controller/linear/y/has_acceleration_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/y/has_acceleration_limits' value true},
+                RosParameter '/move_base/local_costmap/rolling_window' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/rolling_window' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/latch_xy_goal_tolerance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/latch_xy_goal_tolerance' value false},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/antiwindup' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/antiwindup' value false},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/min_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/min_obstacle_height' value -2.0},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/d' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/d' value 0.0},
+                RosParameter '/imu/data/accel/drift' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/accel/drift' value 0.005},
+                RosParameter '/move_base/local_costmap/resolution' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/resolution' value 0.05},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/topic' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/topic' value 'front/scan'},
+                RosParameter '/ridgeback_velocity_controller/front_right_wheel_joint' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/front_right_wheel_joint' value 'front_right_wheel'},
+                RosParameter '/move_base/local_costmap/publish_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/publish_frequency' value 5.0},
+                RosParameter '/ridgeback_velocity_controller/angular/z/max_velocity' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/angular/z/max_velocity' value 2.0},
+                RosParameter '/ekf_localization/odom0_config' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/odom0_config' value {false, false, false, false, false, false, true, true, false, false, false, true, false, false, false}},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/sensor_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/sensor_frame' value 'front_laser'},
+                RosParameter '/ridgeback_velocity_controller/linear/y/max_velocity' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/y/max_velocity' value 1.1},
+                RosParameter '/ridgeback_velocity_controller/back_left_wheel_joint' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/back_left_wheel_joint' value 'rear_left_wheel'},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/raytrace_range' value 12.0},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/max_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/max_obstacle_height' value 2.0},
+                RosParameter '/move_base/local_costmap/inflater_layer/enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/inflater_layer/enabled' value true},
+                RosParameter '/move_base/clearing_rotation_allowed' {RefParameter 'package_name.parameters_node.parameters_node./move_base/clearing_rotation_allowed' value true},
+                RosParameter '/ekf_localization/two_d_mode' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/two_d_mode' value true},
+                RosParameter '/move_base/conservative_reset_dist' {RefParameter 'package_name.parameters_node.parameters_node./move_base/conservative_reset_dist' value 3.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/vx_samples' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/vx_samples' value 6},
+                RosParameter '/ridgeback_velocity_controller/wheel_separation_multiplier' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/wheel_separation_multiplier' value 1.0},
+                RosParameter '/move_base/local_costmap/obstacles_layer/enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/enabled' value true},
+                RosParameter '/move_base/local_costmap/obstacles_layer/combination_method' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/combination_method' value 1},
+                RosParameter '/ekf_localization/world_frame' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/world_frame' value 'odom'},
+                RosParameter '/move_base/conservative_reset/reset_distance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/conservative_reset/reset_distance' value 3.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/i_clamp_min' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/i_clamp_min' value -0.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/i_clamp_max' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/i_clamp_max' value 0.0},
+                RosParameter '/move_base/local_costmap/obstacles_layer/footprint_clearing_enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/footprint_clearing_enabled' value true},
+                RosParameter '/imu/data/accel/gaussian_noise' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/accel/gaussian_noise' value 0.005},
+                RosParameter '/move_base/controller_patience' {RefParameter 'package_name.parameters_node.parameters_node./move_base/controller_patience' value 15.0},
+                RosParameter '/imu/data/yaw/scale_error' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/yaw/scale_error' value 1.0},
+                RosParameter '/move_base/controller_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/controller_frequency' value 20.0},
+                RosParameter '/move_base/max_planning_retries' {RefParameter 'package_name.parameters_node.parameters_node./move_base/max_planning_retries' value -1},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/i' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/i' value 0.1},
+                RosParameter '/ekf_localization/odom0_differential' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/odom0_differential' value false},
+                RosParameter '/move_base/local_costmap/obstacles_layer/observation_sources' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/observation_sources' value 'scan'},
+                RosParameter '/move_base/shutdown_costmaps' {RefParameter 'package_name.parameters_node.parameters_node./move_base/shutdown_costmaps' value false},
+                RosParameter '/move_base/global_costmap/meter_scoring' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/meter_scoring' value true},
+                RosParameter '/move_base/local_costmap/obstacles_layer/max_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/max_obstacle_height' value 2.0},
+                RosParameter '/gazebo/max_contacts' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/max_contacts' value 20},
+                RosParameter '/move_base/TrajectoryPlannerROS/escape_vel' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/escape_vel' value -0.5},
+                RosParameter '/gazebo/contact_max_correcting_vel' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/contact_max_correcting_vel' value 100.0},
+                RosParameter '/move_base/local_costmap/transform_tolerance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/transform_tolerance' value 0.5},
+                RosParameter '/imu/data/rate/drift' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/rate/drift' value 0.00005},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/i' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/i' value 0.1},
+                RosParameter '/imu/data/yaw/drift' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/yaw/drift' value 0.0},
+                RosParameter '/move_base/global_costmap/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/raytrace_range' value 10.0},
+                RosParameter '/gazebo/sor_pgs_iters' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/sor_pgs_iters' value 50},
+                RosParameter '/move_base/local_costmap/width' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/width' value 10},
+                RosParameter '/ekf_localization/imu0' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/imu0' value '/imu/data'},
+                RosParameter '/move_base/local_costmap/inflater_layer/inflate_unknown' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/inflater_layer/inflate_unknown' value false},
+                RosParameter '/move_base/global_costmap/obstacles_layer/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/obstacle_range' value 10.0},
+                RosParameter '/ridgeback_velocity_controller/wheel_separation_y' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/wheel_separation_y' value 0.551},
+                RosParameter '/move_base/global_costmap/height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/height' value 40},
+                RosParameter '/ridgeback_velocity_controller/wheel_radius_multiplier' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/wheel_radius_multiplier' value 1.0},
+                RosParameter '/move_base/local_costmap/obstacles_layer/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/raytrace_range' value 10.0},
+                RosParameter '/move_base/local_costmap/inflater_layer/cost_scaling_factor' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/inflater_layer/cost_scaling_factor' value 10.0},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/i_clamp_max' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/i_clamp_max' value 0.0},
+                RosParameter '/gazebo/enable_ros_network' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/enable_ros_network' value true},
+                RosParameter '/ridgeback_velocity_controller/linear/y/max_acceleration' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/y/max_acceleration' value 2.5},
+                RosParameter '/move_base/local_costmap/inflater_layer/inflation_radius' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/inflater_layer/inflation_radius' value 0.35},
+                RosParameter '/move_base/local_costmap/meter_scoring' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/meter_scoring' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/controller_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/controller_frequency' value 20.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/marking' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/marking' value true},
+                RosParameter '/ridgeback_velocity_controller/angular/z/max_acceleration' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/angular/z/max_acceleration' value 1.0},
+                RosParameter '/move_base/local_costmap/publish_voxel_map' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/publish_voxel_map' value false},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/i' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/i' value 0.1},
+                RosParameter '/move_base/local_costmap/origin_z' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/origin_z' value 0.0},
+                RosParameter '/ridgeback_velocity_controller/linear/x/max_acceleration' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/x/max_acceleration' value 2.5},
+                RosParameter '/gazebo/sor_pgs_precon_iters' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/sor_pgs_precon_iters' value 0},
+                RosParameter '/gazebo/contact_surface_layer' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/contact_surface_layer' value 0.001},
+                RosParameter '/move_base/local_costmap/static_map' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/static_map' value false},
+                RosParameter '/move_base/TrajectoryPlannerROS/acc_lim_theta' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/acc_lim_theta' value 20.0},
+                RosParameter '/robot_description' {RefParameter 'package_name.parameters_node.parameters_node./robot_description' value '<?xml version="1.0" encoding="utf-8"?>
+<!-- =================================================================================== -->
+<!-- |    This document was autogenerated by xacro from /home/nhg/rosin-paper/catkin_ws/src/metacontrol_sim/urdf/ridgeback/ridgeback.xacro | -->
+<!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
+<!-- =================================================================================== -->
+<robot name="ridgeback">
+  <material name="dark_grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="light_grey">
+    <color rgba="0.4 0.4 0.4 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="0.9 0.9 0.9 1.0"/>
+  </material>
+  <material name="yellow">
+    <color rgba="0.8 0.8 0.0 1.0"/>
+  </material>
+  <material name="black">
+    <color rgba="0.15 0.15 0.15 1.0"/>
+  </material>
+  <link name="front_rocker_link">
+    <visual>
+      <origin rpy="1.57079632679 0 1.57079632679" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/rocker.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <inertial>
+      <origin rpy="1.57079632679 0 1.57079632679" xyz="0 0 0"/>
+      <mass value="10.267"/>
+      <inertia ixx="0.0288" ixy="2.20484e-6" ixz="-1.3145e-5" iyy="0.4324" iyz="1.8944e-3" izz="0.4130"/>
+    </inertial>
+  </link>
+  <joint name="front_rocker" type="revolute">
+    <parent link="axle_link"/>
+    <child link="front_rocker_link"/>
+    <origin rpy="0 0 0" xyz="0.319 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="0" lower="-0.08726" upper="0.08726" velocity="0"/>
+  </joint>
+  <link name="front_left_wheel_link">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/wheel.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.079" radius="0.0759"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="2.3"/>
+      <inertia ixx="3.3212e-3" ixy="0" ixz="0" iyy="6.6424e-3" iyz="0" izz="3.3212e-3"/>
+    </inertial>
+  </link>
+  <joint name="front_left_wheel" type="continuous">
+    <parent link="front_rocker_link"/>
+    <child link="front_left_wheel_link"/>
+    <origin rpy="0 0 0" xyz="0 0.2755 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="front_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="front_left_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="front_left_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="front_right_wheel_link">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/wheel.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.079" radius="0.0759"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="2.3"/>
+      <inertia ixx="3.3212e-3" ixy="0" ixz="0" iyy="6.6424e-3" iyz="0" izz="3.3212e-3"/>
+    </inertial>
+  </link>
+  <joint name="front_right_wheel" type="continuous">
+    <parent link="front_rocker_link"/>
+    <child link="front_right_wheel_link"/>
+    <origin rpy="0 0 0" xyz="0 -0.2755 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="front_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="front_right_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="front_right_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="rear_rocker_link">
+    <visual>
+      <origin rpy="1.57079632679 0 1.57079632679" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/rocker.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <inertial>
+      <origin rpy="1.57079632679 0 1.57079632679" xyz="0 0 0"/>
+      <mass value="10.267"/>
+      <inertia ixx="0.0288" ixy="2.20484e-6" ixz="-1.3145e-5" iyy="0.4324" iyz="1.8944e-3" izz="0.4130"/>
+    </inertial>
+  </link>
+  <joint name="rear_rocker" type="fixed">
+    <parent link="axle_link"/>
+    <child link="rear_rocker_link"/>
+    <origin rpy="0 0 0" xyz="-0.319 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="0" velocity="0"/>
+  </joint>
+  <link name="rear_left_wheel_link">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/wheel.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.079" radius="0.0759"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="2.3"/>
+      <inertia ixx="3.3212e-3" ixy="0" ixz="0" iyy="6.6424e-3" iyz="0" izz="3.3212e-3"/>
+    </inertial>
+  </link>
+  <joint name="rear_left_wheel" type="continuous">
+    <parent link="rear_rocker_link"/>
+    <child link="rear_left_wheel_link"/>
+    <origin rpy="0 0 0" xyz="0 0.2755 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="rear_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_left_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rear_left_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="rear_right_wheel_link">
+    <visual>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/wheel.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.079" radius="0.0759"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="2.3"/>
+      <inertia ixx="3.3212e-3" ixy="0" ixz="0" iyy="6.6424e-3" iyz="0" izz="3.3212e-3"/>
+    </inertial>
+  </link>
+  <joint name="rear_right_wheel" type="continuous">
+    <parent link="rear_rocker_link"/>
+    <child link="rear_right_wheel_link"/>
+    <origin rpy="0 0 0" xyz="0 -0.2755 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <transmission name="rear_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_right_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rear_right_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="base_link">
+
+    </link>
+  <joint name="base_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+  </joint>
+  <link name="chassis_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/body.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/body-collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="1.57079632679 0 1.57079632679" xyz="0.012 0.002 0.067"/>
+      <mass value="165.304"/>
+      <inertia ixx="4.4744" ixy="0.03098" ixz="0.003647" iyy="7.1624" iyz="0.1228" izz="4.6155"/>
+    </inertial>
+  </link>
+  <joint name="right_side_cover_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="right_side_cover_link"/>
+  </joint>
+  <joint name="left_side_cover_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="left_side_cover_link"/>
+  </joint>
+  <link name="left_side_cover_link">
+    <visual>
+      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/side-cover.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+  </link>
+  <link name="right_side_cover_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/side-cover.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+  </link>
+  <joint name="front_cover_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="front_cover_link"/>
+  </joint>
+  <link name="front_cover_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/end-cover.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="rear_cover_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="rear_cover_link"/>
+  </joint>
+  <link name="rear_cover_link">
+    <visual>
+      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/end-cover.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="front_lights_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="front_lights_link"/>
+  </joint>
+  <joint name="rear_lights_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="rear_lights_link"/>
+  </joint>
+  <link name="front_lights_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/lights.stl"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  <link name="rear_lights_link">
+    <visual>
+      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/lights.stl"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+  <joint name="top_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="top_link"/>
+  </joint>
+  <link name="top_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/top.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/top.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="axle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.05"/>
+    <parent link="chassis_link"/>
+    <child link="axle_link"/>
+  </joint>
+  <link name="axle_link">
+    <visual>
+      <origin rpy="0 1.57079632679 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://ridgeback_description/meshes/axle.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="imu_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1e-09" ixy="0.0" ixz="0.0" iyy="1e-09" iyz="0.0" izz="1e-09"/>
+    </inertial>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="imu_link"/>
+    <origin rpy="0 0 0" xyz="0.2085 -0.2902 0.1681"/>
+  </joint>
+  <link name="mid_mount"/>
+  <joint name="mid_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mid_mount"/>
+    <origin rpy="0 0 0" xyz="0 0 0.28"/>
+  </joint>
+  <link name="battery_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1e-09" ixy="0.0" ixz="0.0" iyy="1e-09" iyz="0.0" izz="1e-09"/>
+    </inertial>
+  </link>
+  <joint name="battery_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="battery_link"/>
+    <origin rpy="0 0 0" xyz="0.2085 -0.2902 0.1681"/>
+  </joint>
+  <!-- Vacuum Gripper -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libridgeback_ros_force_based_move.so" name="ridgeback_ros_force_based_move">
+      <robotNamespace>/</robotNamespace>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>25.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <cmdVelTimeOut>0.25</cmdVelTimeOut>
+      <publishOdometryTf>0</publishOdometryTf>
+      <yaw_velocity_p_gain>500.0</yaw_velocity_p_gain>
+      <x_velocity_p_gain>10000.0</x_velocity_p_gain>
+      <y_velocity_p_gain>10000.0</y_velocity_p_gain>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libhector_gazebo_ros_imu.so" name="imu_controller">
+      <robotNamespace>/</robotNamespace>
+      <updateRate>50.0</updateRate>
+      <bodyName>imu_link</bodyName>
+      <topicName>imu/data</topicName>
+      <frameId>base_link</frameId>
+      <accelDrift>0.005 0.005 0.005</accelDrift>
+      <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
+      <rateDrift>0.00005 0.00005 0.00005</rateDrift>
+      <rateGaussianNoise>0.00005 0.00005 0.00005</rateGaussianNoise>
+      <headingDrift>0.005</headingDrift>
+      <headingGaussianNoise>0.005</headingGaussianNoise>
+    </plugin>
+  </gazebo>
+  <gazebo>
+    <plugin filename="libgazebo_ros_joint_state_publisher.so" name="gazebo_ros_joint_state_publisher">
+      <jointName>front_rocker</jointName>
+      <robotNamespace>/</robotNamespace>
+      <updateRate>50.0</updateRate>
+    </plugin>
+  </gazebo>
+  <!--
+    <gazebo reference="battery_link">
+      <battery name="linear_battery">
+        <voltage>12.592</voltage>
+      </battery>
+    </gazebo>
+
+    <plugin name="battery" filename="libbattery_discharge.so">
+        <ros_node>battery_monitor_client</ros_node>
+        <link_name>battery_link</link_name>
+        <battery_name>linear_battery</battery_name>
+        <constant_coef>12.694</constant_coef>
+        <linear_coef>-100.1424</linear_coef>
+        <initial_charge>1.1665</initial_charge>
+        <capacity>1.2009</capacity>
+        <resistance>0.061523</resistance>
+        <smooth_current_tau>1.9499</smooth_current_tau>
+        <charge_rate>0.2</charge_rate>
+    </plugin>
+
+
+    <plugin name="consumer" filename="libbattery_consumer.so">
+        <link_name>battery_link</link_name>
+        <battery_name>linear_battery</battery_name>
+        <power_load>6.6</power_load>
+    </plugin>
+
+<gazebo>
+    <plugin name="battery" filename="libLinearBatteryPlugin.so">
+      <link_name>battery_link</link_name>
+      <battery_name>linear_battery</battery_name>
+      <open_circuit_voltage_constant_coef>25</open_circuit_voltage_constant_coef>
+      <open_circuit_voltage_linear_coef>-3.1424</open_circuit_voltage_linear_coef>
+      <initial_charge>1.1665</initial_charge>
+      <capacity>1.2009</capacity>
+      <resistance>0.061523</resistance>
+      <smooth_current_tau>1.9499</smooth_current_tau>
+      <update_rate>0.1</update_rate>
+    </plugin>
+</gazebo>
+
+
+<gazebo>
+  <plugin name="battery_link_battery_consumer" filename="libcustom_battery_consumer_ros_plugin.so">
+    <link_name>battery_link</link_name>
+    <battery_name>linear_battery</battery_name>
+    <power_load>6.6</power_load>
+    <topic_device_state>battery_topic</topic_device_state>
+  </plugin>
+</gazebo>
+    <gazebo>
+        <plugin name="motherboard" filename="libLinearBatteryConsumerPlugin.so">
+          <link_name>base_link</link_name>
+          <battery_name>linear_battery</battery_name>
+          <power_load>6.6</power_load>
+        </plugin>
+    </gazebo>
+-->
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+    <gravity>true</gravity>
+  </gazebo>
+  <!-- Individual link colouring still needed in Gazebo 2.x -->
+  <gazebo reference="chassis_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="top_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="left_side_cover_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="right_side_cover_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="front_cover_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="rear_cover_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="front_lights_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="rear_lights_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="front_rocker_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="rear_rocker_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <gazebo reference="axle_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+  <!-- Wheel friction to zero, as movement is handled by applying forces at
+         the body level. -->
+  <gazebo reference="front_left_wheel_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="front_right_wheel_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="rear_left_wheel_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <gazebo reference="rear_right_wheel_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+  <joint name="front_laser_joint" type="fixed">
+    <origin rpy="0 0 0.0" xyz="0.3932 0 0.2330"/>
+    <parent link="chassis_link"/>
+    <child link="front_laser"/>
+  </joint>
+  <link name="front_laser">
+    <inertial>
+      <mass value="0.130"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="8.01666346e-05" ixy="0.0" ixz="0.0" iyy="8.01666346e-05" iyz="0.0" izz="5.4166645e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <!-- Origin of this mesh is the focal point of the LIDAR. -->
+        <mesh filename="package://ridgeback_description/meshes/ust-10lx.stl"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0.0122"/>
+      <geometry>
+        <box size="0.05 0.05 0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="front_laser">
+    <turnGravityOff>false</turnGravityOff>
+    <sensor name="front_laser" type="ray">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>50</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-2.35619</min_angle>
+            <max_angle>2.35619</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.20</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.001</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_laser">
+        <topicName>front/scan</topicName>
+        <frameName>front_laser</frameName>
+        <hokuyoMinIntensity>101</hokuyoMinIntensity>
+      </plugin>
+    </sensor>
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+</robot>
+
+'},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/p' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/p' value 1.0},
+                RosParameter '/move_base/local_costmap/origin_y' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/origin_y' value 0.0},
+                RosParameter '/gazebo/gravity_z' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/gravity_z' value -9.8},
+                RosParameter '/move_base/oscillation_distance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/oscillation_distance' value 0.5},
+                RosParameter '/move_base/global_costmap/plugins' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/plugins' value {
+                  { 'type' { value 'costmap_2d::ObstacleLayer'}},
+                  { 'name' { value 'obstacles_layer'}}}},
+                RosParameter '/gazebo/cfm' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/cfm' value 0.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/obstacle_range' value 10.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/p' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/p' value 1.0},
+                RosParameter '/move_base/global_costmap/z_resolution' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/z_resolution' value 1},
+                RosParameter '/move_base/local_costmap/footprint' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/footprint' value '[[0.48,-0.4],[0.48,0.4],[-0.48,0.4],[-0.48,-0.4]]'},
+                RosParameter '/move_base/TrajectoryPlannerROS/restore_defaults' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/restore_defaults' value false},
+                RosParameter '/move_base/local_costmap/z_voxels' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/z_voxels' value 2},
+                RosParameter '/move_base/local_costmap/map_type' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/map_type' value 'costmap'},
+                RosParameter '/gazebo/auto_disable_bodies' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/auto_disable_bodies' value false},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/clearing' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/clearing' value true},
+                RosParameter '/gazebo/sor_pgs_w' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/sor_pgs_w' value 1.3},
+                RosParameter '/move_base/TrajectoryPlannerROS/y_vels' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/y_vels' value '-0.3,-0.1,0.1,-0.3'},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/i_clamp_min' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/i_clamp_min' value -0.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/sensor_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/sensor_frame' value 'front_laser'},
+                RosParameter '/ridgeback_velocity_controller/enable_odom_tf' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/enable_odom_tf' value false},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/topic' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/topic' value 'front/scan'},
+                RosParameter '/move_base/global_costmap/publish_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/publish_frequency' value 5.0},
+                RosParameter '/move_base/planner_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/planner_frequency' value 20.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/raytrace_range' value 12.0},
+                RosParameter '/ridgeback_joint_publisher/publish_rate' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_joint_publisher/publish_rate' value 50},
+                RosParameter '/move_base/TrajectoryPlannerROS/xy_goal_tolerance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/xy_goal_tolerance' value 0.25},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/max_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/max_obstacle_height' value 2.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/i' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/i' value 0.1},
+                RosParameter '/move_base/restore_defaults' {RefParameter 'package_name.parameters_node.parameters_node./move_base/restore_defaults' value false},
+                RosParameter '/ridgeback_velocity_controller/pose_covariance_diagonal' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/pose_covariance_diagonal' value {0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 0.03}},
+                RosParameter '/move_base/TrajectoryPlannerROS/heading_scoring_timestep' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/heading_scoring_timestep' value 0.8},
+                RosParameter '/gazebo/gravity_y' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/gravity_y' value 0.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/heading_scoring' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/heading_scoring' value false},
+                RosParameter '/move_base/global_costmap/obstacles_layer/enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/enabled' value true},
+                RosParameter '/gazebo/erp' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/erp' value 0.2},
+                RosParameter '/move_base/global_costmap/obstacles_layer/combination_method' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/combination_method' value 1},
+                RosParameter '/move_base/TrajectoryPlannerROS/pdist_scale' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/pdist_scale' value 0.75},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/i_clamp_max' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/i_clamp_max' value 0.0},
+                RosParameter '/ekf_localization/frequency' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/frequency' value 50},
+                RosParameter '/ridgeback_velocity_controller/angular/z/has_velocity_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/angular/z/has_velocity_limits' value true},
+                RosParameter '/move_base/global_costmap/obstacles_layer/footprint_clearing_enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/footprint_clearing_enabled' value true},
+                RosParameter '/imu/data/accel/scale_error' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/accel/scale_error' value 1.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/raytrace_range' value 10.0},
+                RosParameter '/ekf_localization/base_link_frame' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/base_link_frame' value 'base_link'},
+                RosParameter '/move_base/aggressive_reset/reset_distance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/aggressive_reset/reset_distance' value 1.84},
+                RosParameter '/ridgeback_velocity_controller/cmd_vel_timeout' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/cmd_vel_timeout' value 0.25},
+                RosParameter '/move_base/TrajectoryPlannerROS/escape_reset_dist' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/escape_reset_dist' value 0.1},
+                RosParameter '/move_base/global_costmap/obstacles_layer/observation_sources' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/observation_sources' value 'scan'},
+                RosParameter '/ridgeback_velocity_controller/linear/x/has_velocity_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/x/has_velocity_limits' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/max_vel_y' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/max_vel_y' value 0.5},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/i_clamp_min' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/i_clamp_min' value -0.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/max_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/max_obstacle_height' value 2.0},
+                RosParameter '/move_base/local_costmap/raytrace_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/raytrace_range' value 10.0},
+                RosParameter '/ridgeback_velocity_controller/front_left_wheel_joint' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/front_left_wheel_joint' value 'front_left_wheel'},
+                RosParameter '/move_base/global_costmap/transform_tolerance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/transform_tolerance' value 0.5},
+                RosParameter '/move_base/global_costmap/footprint_padding' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/footprint_padding' value 0.1},
+                RosParameter '/ridgeback_velocity_controller/angular/z/has_acceleration_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/angular/z/has_acceleration_limits' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/goal_distance_bias' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/goal_distance_bias' value 1.0},
+                RosParameter '/imu/data/rate/offset' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/rate/offset' value 0.0},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/min_obstacle_height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/min_obstacle_height' value -2.0},
+                RosParameter '/move_base/global_costmap/width' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/width' value 40},
+                RosParameter '/ridgeback_velocity_controller/twist_covariance_diagonal' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/twist_covariance_diagonal' value {0.001, 0.001, 0.001, 1000000.0, 1000000.0, 0.03}},
+                RosParameter '/move_base/global_costmap/inflater_layer/inflate_unknown' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/inflater_layer/inflate_unknown' value false},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/antiwindup' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/antiwindup' value false},
+                RosParameter '/move_base/planner_patience' {RefParameter 'package_name.parameters_node.parameters_node./move_base/planner_patience' value 5.0},
+                RosParameter '/gazebo/max_update_rate' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/max_update_rate' value 1000.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/vtheta_samples' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/vtheta_samples' value 20},
+                RosParameter '/ridgeback_velocity_controller/linear/x/has_acceleration_limits' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/x/has_acceleration_limits' value true},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/p' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/p' value 1.0},
+                RosParameter '/move_base/global_costmap/inflater_layer/cost_scaling_factor' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/inflater_layer/cost_scaling_factor' value 10.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/min_vel_theta' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/min_vel_theta' value -1.57},
+                RosParameter '/move_base/oscillation_timeout' {RefParameter 'package_name.parameters_node.parameters_node./move_base/oscillation_timeout' value 0.0},
+                RosParameter '/move_base/global_costmap/inflater_layer/inflation_radius' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/inflater_layer/inflation_radius' value 0.35},
+                RosParameter '/ridgeback_velocity_controller/wheel_separation_x' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/wheel_separation_x' value 0.638},
+                RosParameter '/move_base/TrajectoryPlannerROS/heading_lookahead' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/heading_lookahead' value 0.325},
+                RosParameter '/ridgeback_velocity_controller/linear/x/max_velocity' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/linear/x/max_velocity' value 1.1},
+                RosParameter '/move_base/global_costmap/inflater_layer/enabled' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/inflater_layer/enabled' value true},
+                RosParameter '/imu/data/accel/offset' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/accel/offset' value 0.0},
+                RosParameter '/move_base/global_costmap/publish_voxel_map' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/publish_voxel_map' value false},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/d' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/d' value 0.0},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/i_clamp_min' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/i_clamp_min' value -0.0},
+                RosParameter '/move_base/global_costmap/origin_z' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/origin_z' value 0.0},
+                RosParameter '/move_base/local_costmap/obstacles_layer/scan/clearing' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/obstacles_layer/scan/clearing' value true},
+                RosParameter '/imu/data/yaw/gaussian_noise' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/yaw/gaussian_noise' value 0.0},
+                RosParameter '/move_base/global_costmap/static_map' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/static_map' value true},
+                RosParameter '/move_base/global_costmap/rolling_window' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/rolling_window' value false},
+                RosParameter '/imu/data/accel/drift_frequency' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/accel/drift_frequency' value 0.000277777777778},
+                RosParameter '/move_base/TrajectoryPlannerROS/min_vel_y' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/min_vel_y' value 0.1},
+                RosParameter '/move_base/TrajectoryPlannerROS/yaw_goal_tolerance' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/yaw_goal_tolerance' value 0.157},
+                RosParameter '/gazebo/time_step' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/time_step' value 0.001},
+                RosParameter '/move_base/TrajectoryPlannerROS/angular_sim_granularity' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/angular_sim_granularity' value 0.02},
+                RosParameter '/move_base/global_costmap/origin_y' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/origin_y' value -20.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_left_wheel/d' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_left_wheel/d' value 0.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/max_vel_theta' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/max_vel_theta' value 1.57},
+                RosParameter '/imu/data/yaw/drift_frequency' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/yaw/drift_frequency' value 0.000277777777778},
+                RosParameter '/move_base/global_costmap/origin_x' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/origin_x' value -20.0},
+                RosParameter '/gazebo_ros_control/pid_gains/rear_right_wheel/antiwindup' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/rear_right_wheel/antiwindup' value false},
+                RosParameter '/move_base/base_local_planner' {RefParameter 'package_name.parameters_node.parameters_node./move_base/base_local_planner' value 'base_local_planner/TrajectoryPlannerROS'},
+                RosParameter '/ridgeback_joint_publisher/type' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_joint_publisher/type' value 'joint_state_controller/JointStateController'},
+                RosParameter '/move_base/global_costmap/footprint' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/footprint' value '[[0.48,-0.4],[0.48,0.4],[-0.48,0.4],[-0.48,-0.4]]'},
+                RosParameter '/ekf_localization/odom_frame' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/odom_frame' value 'odom'},
+                RosParameter '/move_base/TrajectoryPlannerROS/acc_lim_x' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/acc_lim_x' value 10.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/occdist_scale' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/occdist_scale' value 0.1},
+                RosParameter '/move_base/global_costmap/map_type' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/map_type' value 'costmap'},
+                RosParameter '/imu/data/rate/drift_frequency' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/rate/drift_frequency' value 0.000277777777778},
+                RosParameter '/move_base/global_costmap/global_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/global_frame' value 'odom'},
+                RosParameter '/move_base/TrajectoryPlannerROS/sim_time' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/sim_time' value 2.0},
+                RosParameter '/ridgeback_velocity_controller/publish_rate' {RefParameter 'package_name.parameters_node.parameters_node./ridgeback_velocity_controller/publish_rate' value 50},
+                RosParameter '/gazebo/gravity_x' {RefParameter 'package_name.parameters_node.parameters_node./gazebo/gravity_x' value 0.0},
+                RosParameter '/move_base/global_costmap/z_voxels' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/z_voxels' value 2},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/antiwindup' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/antiwindup' value false},
+                RosParameter '/move_base/TrajectoryPlannerROS/oscillation_reset_dist' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/oscillation_reset_dist' value 0.05},
+                RosParameter '/move_base/global_costmap/obstacles_layer/scan/data_type' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacles_layer/scan/data_type' value 'LaserScan'},
+                RosParameter '/move_base/global_costmap/robot_radius' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/robot_radius' value 0.46},
+                RosParameter '/move_base/TrajectoryPlannerROS/max_vel_x' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/max_vel_x' value 0.5},
+                RosParameter '/use_sim_time' {RefParameter 'package_name.parameters_node.parameters_node./use_sim_time' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/holonomic_robot' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/holonomic_robot' value true},
+                RosParameter '/move_base/TrajectoryPlannerROS/simple_attractor' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/simple_attractor' value false},
+                RosParameter '/gazebo_ros_control/pid_gains/front_right_wheel/p' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_right_wheel/p' value 1.0},
+                RosParameter '/move_base/global_costmap/robot_base_frame' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/robot_base_frame' value 'base_link'},
+                RosParameter '/move_base/TrajectoryPlannerROS/meter_scoring' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/meter_scoring' value true},
+                RosParameter '/move_base/local_costmap/origin_x' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/origin_x' value 0.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/min_in_place_vel_theta' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/min_in_place_vel_theta' value 0.314},
+                RosParameter '/move_base/global_costmap/obstacle_range' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/obstacle_range' value 10.0},
+                RosParameter '/move_base/local_costmap/footprint_padding' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/footprint_padding' value 0.1},
+                RosParameter '/ekf_localization/odom0' {RefParameter 'package_name.parameters_node.parameters_node./ekf_localization/odom0' value '/ridgeback_velocity_controller/odom'},
+                RosParameter '/gazebo_ros_control/pid_gains/front_left_wheel/d' {RefParameter 'package_name.parameters_node.parameters_node./gazebo_ros_control/pid_gains/front_left_wheel/d' value 0.0},
+                RosParameter '/move_base/local_costmap/height' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/height' value 10},
+                RosParameter '/move_base/TrajectoryPlannerROS/dwa' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/dwa' value true},
+                RosParameter '/imu/data/rate/gaussian_noise' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/rate/gaussian_noise' value 0.00005},
+                RosParameter '/move_base/TrajectoryPlannerROS/path_distance_bias' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/path_distance_bias' value 0.75},
+                RosParameter '/move_base/local_costmap/update_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/update_frequency' value 20.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/gdist_scale' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/gdist_scale' value 1.0},
+                RosParameter '/imu/data/rate/scale_error' {RefParameter 'package_name.parameters_node.parameters_node./imu/data/rate/scale_error' value 1.0},
+                RosParameter '/move_base/global_costmap/resolution' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/resolution' value 0.05},
+                RosParameter '/move_base/global_costmap/update_frequency' {RefParameter 'package_name.parameters_node.parameters_node./move_base/global_costmap/update_frequency' value 20.0},
+                RosParameter '/move_base/TrajectoryPlannerROS/min_vel_x' {RefParameter 'package_name.parameters_node.parameters_node./move_base/TrajectoryPlannerROS/min_vel_x' value 0.1},
+                RosParameter '/move_base/local_costmap/plugins' {RefParameter 'package_name.parameters_node.parameters_node./move_base/local_costmap/plugins' value {
+                  { 'type' { value 'costmap_2d::ObstacleLayer'}},
+                  { 'name' { value 'obstacles_layer'}}}}}
+}
+) TopicConnections { TopicConnection "/odometry/filtered" { From ( "/ekf_localization./odometry/filtered" ) To ( "/move_base./odometry/filtered" ) } , TopicConnection "/cmd_vel" { From ( "/move_base./cmd_vel" ) To ( "/cmd_vel_relay./cmd_vel" ) } , TopicConnection "/cmd_vel" { From ( "/move_base./cmd_vel" ) To ( "/gazebo./cmd_vel" ) } , TopicConnection "/joint_states" { From ( "/gazebo./joint_states" ) To ( "/robot_state_publisher./joint_states" ) } , TopicConnection "/ridgeback_velocity_controller/odom" { From ( "/gazebo./ridgeback_velocity_controller/odom" ) To ( "/ekf_localization./ridgeback_velocity_controller/odom" ) } , TopicConnection "/front/scan" { From ( "/gazebo./front/scan" ) To ( "/move_base./front/scan" ) } , TopicConnection "/imu/data" { From ( "/gazebo./imu/data" ) To ( "/ekf_localization./imu/data" ) } } }
