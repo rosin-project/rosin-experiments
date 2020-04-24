@@ -1,0 +1,12 @@
+PackageSet { package { 
+  CatkinPackage battery_monitor { artifact {
+    Artifact battery_monitor {
+      node Node { name /battery_monitor
+        publisher {
+          Publisher { name '/diagnostics' message 'diagnostic_msgs.DiagnosticArray'}}
+        subscriber {
+          Subscriber { name '/power_state' message 'sensor_msgs.BatteryState'}}
+        parameter {
+          Parameter { name percentage_threshold_warning type Integer { default 20}},
+          Parameter { name percentage_threshold_error type Integer { default 10}}	
+}}}}}}}
