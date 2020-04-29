@@ -9,8 +9,7 @@
 			inflation_radius: 0.25
 		</rosparam>
 
-
-
 	<node pkg="" type="" name="move_base" cwd="node" respawn="false" output="screen">
 	</node>
+
 </launch>
