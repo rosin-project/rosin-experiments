@@ -14,15 +14,6 @@
     <semanticResources>rosin_experiment.rossystem</semanticResources>
     <semanticResources>msgs/geographic_msgs.ros</semanticResources>
     <semanticResources>msgs/uuid_msgs.ros</semanticResources>
-    <semanticResources>components/cmd_vel_relay.componentinterface</semanticResources>
-    <semanticResources>components/controller_spawner.componentinterface</semanticResources>
-    <semanticResources>components/ekf_localization.componentinterface</semanticResources>
-    <semanticResources>components/gazebo.componentinterface</semanticResources>
-    <semanticResources>components/gazebo_gui.componentinterface</semanticResources>
-    <semanticResources>components/move_base.componentinterface</semanticResources>
-    <semanticResources>components/parameters_node.componentinterface</semanticResources>
-    <semanticResources>components/robot_state_publisher.componentinterface</semanticResources>
-    <semanticResources>components/system_name.componentinterface</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_ADVZwIL7EeqpAb_jX6OIMg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/de.fraunhofer.ipa.ros.sirius/description/ros.odesign#//@ownedViewpoints[name='component']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_AaJXQIL7EeqpAb_jX6OIMg" name="rosin_experiment" repPath="#_AYnGMIL7EeqpAb_jX6OIMg">
