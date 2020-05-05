@@ -1,0 +1,11 @@
+RosSystem { Name 'move_base_fast'  RosComponents ( 
+    ComponentInterface { name move_base NameSpace "move_base"
+    RosParameters{ 
+    	RosParameter "controller_frequency" { RefParameter "move_base.move_base.move_base.controller_frequency" value 25}, 
+    	RosParameter "planner_frequency" { RefParameter "move_base.move_base.move_base.planner_frequency" value 10.0}, 
+    	RosParameter "acc_lim_x" { RefParameter "move_base.move_base.move_base.acc_lim_x" value 10.0}, 
+    	RosParameter "max_vel_x" { RefParameter "move_base.move_base.move_base.max_vel_x" value 0.75}, 
+    	RosParameter "obstacle_range" { RefParameter "move_base.move_base.move_base.obstacle_range" value 15}, 
+    	RosParameter "inflation_radius" { RefParameter "move_base.move_base.move_base.inflation_radius" value 0.5}
+    }})
+}

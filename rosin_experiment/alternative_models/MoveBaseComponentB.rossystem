@@ -8,4 +8,4 @@ RosSystem { Name 'MoveBaseComponentB'
 		Parameter { name 'move_base/obstacle_range' type Integer {default 10} value 8},
 		Parameter { name 'move_base/inflation_radius' type Double {default 0.35} value 0.25}
 	}
-}
+} 

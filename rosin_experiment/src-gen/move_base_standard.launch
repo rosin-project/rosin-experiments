@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-	<node pkg="move_base" type="" name="move_base" ns="move_base" cwd="node" respawn="false" output="screen">
+	<node pkg="move_base" type="move_base" name="move_base" ns="move_base" cwd="node" respawn="false" output="screen">
 		<param name=controller_frequency value= 20 />
 		<param name=planner_frequency value= 7.5 />
 		<param name=acc_lim_x value= 5.0 />

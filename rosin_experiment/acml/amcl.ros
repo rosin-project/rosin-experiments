@@ -1,0 +1,43 @@
+PackageSet { package {
+	CatkinPackage amcl { artifact {
+		Artifact  amcl {
+			node Node { name acml 
+			parameter { 
+				Parameter { name use_map_topic type Boolean},
+				Parameter { name odom_model_type type String},
+				Parameter { name odom_alpha5 type Double},
+				Parameter { name gui_publish_rate type Double},
+				Parameter { name laser_max_beams type Integer},
+				Parameter { name laser_min_range type Double},
+				Parameter { name laser_max_range type Double},
+				Parameter { name min_particles type Integer},
+				Parameter { name max_particles type Integer},
+				Parameter { name kld_err type Double},
+				Parameter { name kld_z type Double},
+				Parameter { name odom_alpha1 type Double},
+				Parameter { name odom_alpha2 type Double},
+				Parameter { name odom_alpha3 type Double},
+				Parameter { name odom_alpha4 type Double},
+				Parameter { name laser_z_hit type Double},
+				Parameter { name laser_z_short type Double},
+				Parameter { name laser_z_max type Double},
+				Parameter { name laser_z_rand type Double},
+				Parameter { name laser_sigma_hit type Double},
+				Parameter { name laser_lambda_short type Double},
+				Parameter { name laser_model_type type String},
+				Parameter { name laser_likelihood_max_dist type Double},
+				Parameter { name update_min_d type Double},
+				Parameter { name update_min_a type Double},
+				Parameter { name odom_frame_id type String},
+				Parameter { name base_frame_id type String},
+				Parameter { name global_frame_id type String},
+				Parameter { name resample_interval type Integer},
+				Parameter { name transform_tolerance type Double},
+				Parameter { name recovery_alpha_slow type Double},
+				Parameter { name recovery_alpha_fast type Double},
+				Parameter { name initial_pose_x type Double},
+				Parameter { name initial_pose_y type Double},
+				Parameter { name initial_pose_a type Double},
+				Parameter { name receive_map_topic type Boolean},
+				Parameter { name first_map_only type Boolean}
+		}}}}}}}

@@ -1,0 +1,12 @@
+PackageSet { package { 
+  CatkinPackage move_base { artifact {
+    Artifact move_base {
+      node Node { name move_base
+		parameter { 
+			Parameter { name controller_frequency type Integer {default 20}},
+			Parameter { name planner_frequency type Double {default 7.5}},
+			Parameter { name acc_lim_x type Double {default 5.0}},
+			Parameter { name max_vel_x type Double {default 0.5}},
+			Parameter { name obstacle_range type Integer {default 10}},
+			Parameter { name inflation_radius type Double {default 0.35}}
+}}}}}}}

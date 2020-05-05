@@ -1,4 +1,0 @@
-PackageSet { package { 
-  CatkinPackage move_base { artifact {
-    Artifact move_base {
-      node Node { name move_base}}}}}}
