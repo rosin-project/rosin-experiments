@@ -1,0 +1,17 @@
+PackageSet { package { 
+  CatkinPackage metacontrol_sim { artifact {
+    Artifact safety_distance_publisher {
+      node Node { name safety_distance_publisher_node
+        publisher {
+          Publisher { name '/d_obstacle' message 'std_msgs.Float32'},
+          Publisher { name '/d_inflation' message 'std_msgs.Float32'}}
+        subscriber {
+          Subscriber { name '/scan_filtered' message 'sensor_msgs.LaserScan'}}
+        parameter {
+          Parameter { name '/safety_distance_publisher_node/scan_filter_chain' type Struc {
+            'type' String,
+            'params' Struc{
+              'lower_angle' Double,
+              'upper_angle' Double},
+            'name' String}}}
+}}}}}}
