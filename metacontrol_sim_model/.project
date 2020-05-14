@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>rosin_simulation_model</name>
+	<name>metacontrol_sim_model</name>
 	<comment></comment>
 	<projects>
 		<project>de.fraunhofer.ipa.ros.communication.objects</project>
