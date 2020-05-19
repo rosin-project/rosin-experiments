@@ -1,0 +1,28 @@
+PackageSet { package {
+	CatkinPackage base_sim { artifact {
+    Artifact /base_sim {
+      node Node { name /gazebo
+        serviceserver {
+          ServiceServer { name '/gazebo_ros_control/pid_gains/front_left_wheel/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
+          ServiceServer { name '/controller_manager/reload_controller_libraries' service 'controller_manager_msgs.ReloadControllerLibraries'},
+          ServiceServer { name '/controller_manager/list_controllers' service 'controller_manager_msgs.ListControllers'},
+          ServiceServer { name '/controller_manager/load_controller' service 'controller_manager_msgs.LoadController'},
+          ServiceServer { name '/controller_manager/list_controller_types' service 'controller_manager_msgs.ListControllerTypes'},
+          ServiceServer { name '/controller_manager/unload_controller' service 'controller_manager_msgs.UnloadController'},
+          ServiceServer { name '/controller_manager/switch_controller' service 'controller_manager_msgs.SwitchController'},
+          ServiceServer { name '/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
+          ServiceServer { name '/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
+        publisher {
+          Publisher { name '/gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates' message 'dynamic_reconfigure.Config'},
+          Publisher { name '/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates' message 'dynamic_reconfigure.Config'},
+          Publisher { name '/joint_states' message 'sensor_msgs.JointState'},
+          Publisher { name '/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates' message 'dynamic_reconfigure.Config'},
+          Publisher { name '/odom' message 'nav_msgs.Odometry'},
+          Publisher { name '/gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name '/gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name '/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name '/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name '/gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates' message 'dynamic_reconfigure.Config'}}
+        subscriber {
+          Subscriber { name '/cmd_vel' message 'geometry_msgs.Twist'}}}
+}}}}}

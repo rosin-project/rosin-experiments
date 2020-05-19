@@ -1,0 +1,34 @@
+PackageSet { package {
+	CatkinPackage imu_sim { artifact {
+    Artifact /imu {
+      node Node { name /gazebo
+        serviceserver {
+          ServiceServer { name 'data/calibrate' service 'std_srvs.Empty'},
+          ServiceServer { name 'data/yaw/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
+          ServiceServer { name 'data/rate/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
+          ServiceServer { name 'data/accel/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
+        publisher {
+          Publisher { name 'data/accel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name 'data/bias' message 'sensor_msgs.Imu'},
+          Publisher { name 'data' message 'sensor_msgs.Imu'},
+          Publisher { name 'data/accel/parameter_updates' message 'dynamic_reconfigure.Config'},
+          Publisher { name 'data/rate/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
+          Publisher { name 'data/yaw/parameter_updates' message 'dynamic_reconfigure.Config'},
+          Publisher { name 'data/yaw/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'}}
+        parameter {
+          Parameter { name 'data/rate/offset' type Double },
+          Parameter { name 'data/accel/scale_error' type Double },
+          Parameter { name 'data/yaw/drift_frequency' type Double },
+          Parameter { name 'data/yaw/gaussian_noise' type Double },
+          Parameter { name 'data/rate/drift' type Double },
+          Parameter { name 'data/accel/gaussian_noise' type Double },
+          Parameter { name 'data/rate/gaussian_noise' type Double },
+          Parameter { name 'data/accel/drift' type Double },
+          Parameter { name 'data/accel/drift_frequency' type Double },
+          Parameter { name 'data/yaw/drift' type Double },
+          Parameter { name 'data/yaw/offset' type Double },
+          Parameter { name 'data/rate/scale_error' type Double },
+          Parameter { name 'data/rate/drift_frequency' type Double },
+          Parameter { name 'data/accel/offset' type Double },
+          Parameter { name 'data/yaw/scale_error' type Double }
+}}}}}}}

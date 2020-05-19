@@ -1,0 +1,10 @@
+PackageSet { package { 
+  CatkinPackage rosgraph_monitor { artifact {
+    Artifact my_observer {
+      node Node { name /my_observer
+        publisher { 
+          Publisher { name '/diagnostics' message 'diagnostic_msgs.DiagnosticArray'}}
+        subscriber {
+          Subscriber { name '/d_obstacle' message 'std_msgs.Float32'},
+          Subscriber { name '/odom' message 'nav_msgs.Odometry'},
+          Subscriber { name 'imu/data' message 'sensor_msgs.Imu'}}}}}}}}
