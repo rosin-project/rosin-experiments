@@ -1,7 +1,11 @@
 RosSystem { Name 'f1_v2_r3'  RosComponents (
-    ComponentInterface { name move_base NameSpace 'move_base'
+    ComponentInterface { name move_base 
         RosParameters{
             RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value 15},
-            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.max_vel_x' value 0.5},
-            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.inflation_radius' value 0.6}
-    }})}
+            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_x' value 0.5},
+            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.local_costmap/inflater_layer/inflation_radius' value 0.6}
+    }})
+    Parameters {
+        Parameter { name qa_safety type Double value 0.0},
+        Parameter { name qa_energy type Double value 0.0}}
+    }
