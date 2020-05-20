@@ -22,16 +22,15 @@ do
 			system_name="f${i}_v${j}_r${k}"
 			file_name="${system_name}.rossystem"
 			touch ${file_name}
-			echo "RosSystem { Name '${system_name}'  RosComponents (\n    ComponentInterface { name move_base NameSpace 'move_base'\n        RosParameters{" > ${file_name}
-			echo "            RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
-			echo "            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.max_vel_x' value $vel}," >> ${file_name}
-			echo "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.inflation_radius' value $rad}" >> ${file_name}
+			echo "RosSystem { Name '${system_name}'  RosComponents (\n    ComponentInterface { name move_base \n        RosParameters{" > ${file_name}
+			echo "            RosParameter 'move_base/controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
+			echo "            RosParameter 'move_base/max_vel_x' { RefParameter 'move_base.move_base.move_base.max_vel_x' value $vel}," >> ${file_name}
+			echo "            RosParameter 'move_base/inflation_radius' { RefParameter 'move_base.move_base.move_base.inflation_radius' value $rad}" >> ${file_name}
 			echo "    }})" >> ${file_name}
 			echo "    Parameters {" >> ${file_name}
 			echo "        Parameter { name qa_safety type Double value $qa_safety}," >> ${file_name}
 			echo "        Parameter { name qa_energy type Double value $qa_energy}}" >> ${file_name}
-			echo "    }" >> ${file_name}
-			
+			echo "    }" >> ${file_name}			
 		done
 	done
 done
