@@ -1,6 +1,8 @@
 #!/bin/sh
 qa_safety=0.0
 qa_energy=0.0
+echo "configs: [" > rosgraph_manipulator_config.yaml
+
 #for controller_frequency
 for i in 1 2 3
 do
@@ -31,8 +33,11 @@ do
 			echo "        Parameter { name qa_safety type Double value $qa_safety}," >> ${file_name}
 			echo "        Parameter { name qa_energy type Double value $qa_energy}}" >> ${file_name}
 			echo "    }" >> ${file_name}
-			
+			echo "'${system_name}'," >>  rosgraph_manipulator_config.yaml
 		done
 	done
 done
+sed -i '$ s/.$//' rosgraph_manipulator_config.yaml
+echo "]" >> rosgraph_manipulator_config.yaml
+echo $(tr -d '\n' < rosgraph_manipulator_config.yaml) > rosgraph_manipulator_config.yaml
 
