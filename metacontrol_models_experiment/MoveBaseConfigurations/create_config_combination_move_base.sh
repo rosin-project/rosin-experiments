@@ -1,4 +1,6 @@
 #!/bin/sh
+qa_safety=0.0
+qa_energy=0.0
 #for controller_frequency
 for i in 1 2 3
 do
@@ -24,7 +26,12 @@ do
 			echo "            RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
 			echo "            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.max_vel_x' value $vel}," >> ${file_name}
 			echo "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.inflation_radius' value $rad}" >> ${file_name}
-			echo "    }})}" >> ${file_name}
+			echo "    }})" >> ${file_name}
+			echo "    Parameters {" >> ${file_name}
+			echo "        Parameter { name qa_safety type Double value $qa_safety}," >> ${file_name}
+			echo "        Parameter { name qa_energy type Double value $qa_energy}}" >> ${file_name}
+			echo "    }" >> ${file_name}
+			
 		done
 	done
 done

@@ -1,5 +1,8 @@
-RosSystem { Name 'system' 
-RosComponents ( 
+RosSystem { Name 'system'
+	Parameters {
+		Parameter { name qa_safety type Double },
+		Parameter { name qa_energy type Double }} 
+	RosComponents ( 
 	ComponentInterface { name move_base NameSpace move_base 
 	RosPublishers { 
 		RosPublisher "move_base/global_costmap/inflater_layer/parameter_updates" { ns move_base RefPublisher "move_base.move_base.move_base.global_costmap/inflater_layer/parameter_updates" } , 
@@ -15,9 +18,9 @@ RosComponents (
 		RosPublisher "move_base/parameter_updates" { ns move_base RefPublisher "move_base.move_base.move_base.parameter_updates" } , 
 		RosPublisher "move_base/parameter_descriptions" { ns move_base RefPublisher "move_base.move_base.move_base.parameter_descriptions" } , 
 		RosPublisher "move_base/local_costmap/inflater_layer/parameter_descriptions" { ns move_base RefPublisher "move_base.move_base.move_base.local_costmap/inflater_layer/parameter_descriptions" } ,
-	    RosPublisher "move_base/local_costmap/parameter_updates" { ns move_base RefPublisher "move_base.move_base.move_base.local_costmap/parameter_updates" } , 
-	    RosPublisher "/cmd_vel" { ns move_base RefPublisher "move_base.move_base.move_base./cmd_vel" } , 
-	    RosPublisher "move_base/global_costmap/costmap" { ns move_base RefPublisher "move_base.move_base.move_base.global_costmap/costmap" } ,
+		RosPublisher "move_base/local_costmap/parameter_updates" { ns move_base RefPublisher "move_base.move_base.move_base.local_costmap/parameter_updates" } , 
+		RosPublisher "/cmd_vel" { ns move_base RefPublisher "move_base.move_base.move_base./cmd_vel" } , 
+		RosPublisher "move_base/global_costmap/costmap" { ns move_base RefPublisher "move_base.move_base.move_base.global_costmap/costmap" } ,
 		RosPublisher "move_base/TrajectoryPlannerROS/parameter_descriptions" { ns move_base RefPublisher "move_base.move_base.move_base.TrajectoryPlannerROS/parameter_descriptions" } ,
 		RosPublisher "move_base/local_costmap/costmap_updates" { ns move_base RefPublisher "move_base.move_base.move_base.local_costmap/costmap_updates" } ,
 		RosPublisher "move_base/goal" { ns move_base RefPublisher "move_base.move_base.move_base.goal" } ,
@@ -218,11 +221,11 @@ RosComponents (
 		RosParameter "move_base/global_costmap/obstacle_range" { ns move_base RefParameter "move_base.move_base.move_base.global_costmap/obstacle_range"} , 
 		RosParameter "move_base/TrajectoryPlannerROS/heading_scoring_timestep" { ns move_base RefParameter "move_base.move_base.move_base.TrajectoryPlannerROS/heading_scoring_timestep"} , 
 		RosParameter "move_base/local_costmap/obstacles_layer/point_cloud/topic" { ns move_base RefParameter "move_base.move_base.move_base.local_costmap/obstacles_layer/point_cloud/topic"} , 
-		RosParameter "move_base/global_costmap/inflater_layer/inflate_unknown" { ns move_base RefParameter "move_base.move_base.move_base.global_costmap/inflater_layer/inflate_unknown" } } } , 		    
-    ComponentInterface { name battery_load_control 
-    RosPublishers { 
+		RosParameter "move_base/global_costmap/inflater_layer/inflate_unknown" { ns move_base RefParameter "move_base.move_base.move_base.global_costmap/inflater_layer/inflate_unknown" } } } ,
+	ComponentInterface { name battery_load_control 
+		RosPublishers { 
 		RosPublisher "/power_load" { RefPublisher "metacontrol_sim.battery_load_control_node.battery_load_control_node./power_load" } }
-    RosSubscribers { 
+	RosSubscribers { 
 		RosSubscriber "/odom" { RefSubscriber "metacontrol_sim.battery_load_control_node.battery_load_control_node./odom"} , 
 		RosSubscriber"/cmd_vel" { RefSubscriber "metacontrol_sim.battery_load_control_node.battery_load_control_node./cmd_vel"} , 
 		RosSubscriber"/imu/data" { RefSubscriber "metacontrol_sim.battery_load_control_node.battery_load_control_node./imu/data" } } 
@@ -237,7 +240,7 @@ RosComponents (
 		RosParameter controller_frequency { RefParameter "metacontrol_sim.battery_load_control_node.battery_load_control_node.controller_frequency"} , 
 		RosParameter const_acceleration { RefParameter "metacontrol_sim.battery_load_control_node.battery_load_control_node.const_acceleration"} , 
 		RosParameter const_frequency { RefParameter "metacontrol_sim.battery_load_control_node.battery_load_control_node.const_frequency" } } } , 
-    ComponentInterface { name fake_localization 
+	ComponentInterface { name fake_localization 
 	RosPublishers { 
 		RosPublisher "/amcl_pose" { RefPublisher "fake_localization.fake_localization.fake_localization./amcl_pose"} , 
 		RosPublisher"/particlecloud" { RefPublisher "fake_localization.fake_localization.fake_localization./particlecloud" } } 
@@ -273,5 +276,60 @@ RosComponents (
 	RosSubscribers { 
 		RosSubscriber "/scan_filtered" { RefSubscriber "metacontrol_sim.safety_distance_publisher.safety_distance_publisher_node./scan_filtered" } } 
 	RosParameters { 
-		RosParameter  "/safety_distance_publisher_node/scan_filter_chain" { RefParameter "metacontrol_sim.safety_distance_publisher.safety_distance_publisher_node./safety_distance_publisher_node/scan_filter_chain" } } } 
-, ComponentInterface { name imu NameSpace imu RosPublishers { RosPublisher "imu/data/accel/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/accel/parameter_descriptions" } , RosPublisher "imu/data/bias" { ns imu RefPublisher "imu_sim./imu./gazebo.data/bias" } , RosPublisher "imu/data" { ns imu RefPublisher "imu_sim./imu./gazebo.data" } , RosPublisher "imu/data/accel/parameter_updates" { ns imu RefPublisher "imu_sim./imu./gazebo.data/accel/parameter_updates" } , RosPublisher "imu/data/rate/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/rate/parameter_descriptions" } , RosPublisher "imu/data/yaw/parameter_updates" { ns imu RefPublisher "imu_sim./imu./gazebo.data/yaw/parameter_updates" } , RosPublisher "imu/data/yaw/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/yaw/parameter_descriptions" } } RosSrvServers { RosServiceServer "imu/data/calibrate" { ns imu RefServer "imu_sim./imu./gazebo.data/calibrate" } , RosServiceServer "imu/data/yaw/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/yaw/set_parameters" } , RosServiceServer "imu/data/rate/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/rate/set_parameters" } , RosServiceServer "imu/data/accel/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/accel/set_parameters" } } RosParameters { RosParameter "imu/data/rate/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/offset" } , RosParameter "imu/data/accel/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/scale_error" } , RosParameter "imu/data/yaw/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/drift_frequency" } , RosParameter "imu/data/yaw/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/gaussian_noise" } , RosParameter "imu/data/rate/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/drift" } , RosParameter "imu/data/accel/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/gaussian_noise" } , RosParameter "imu/data/rate/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/gaussian_noise" } , RosParameter "imu/data/accel/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/drift" } , RosParameter "imu/data/accel/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/drift_frequency" } , RosParameter "imu/data/yaw/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/drift" } , RosParameter "imu/data/yaw/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/offset" } , RosParameter "imu/data/rate/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/scale_error" } , RosParameter "imu/data/rate/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/drift_frequency" } , RosParameter "imu/data/accel/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/offset" } , RosParameter "imu/data/yaw/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/scale_error" } } } , ComponentInterface { name base_sim RosPublishers { RosPublisher "/gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates" } , RosPublisher "/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates" } , RosPublisher "/joint_states" { RefPublisher "base_sim./base_sim./gazebo./joint_states" } , RosPublisher "/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates" } , RosPublisher "/odom" { RefPublisher "base_sim./base_sim./gazebo./odom" } , RosPublisher "/gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions" } , RosPublisher "/gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions" } , RosPublisher "/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions" } , RosPublisher "/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions" } , RosPublisher "/gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates" } } RosSubscribers { RosSubscriber "/cmd_vel" { RefSubscriber "base_sim./base_sim./gazebo./cmd_vel" } } RosSrvServers { RosServiceServer "/gazebo_ros_control/pid_gains/front_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/set_parameters" } , RosServiceServer "/controller_manager/reload_controller_libraries" { RefServer "base_sim./base_sim./gazebo./controller_manager/reload_controller_libraries" } , RosServiceServer "/controller_manager/list_controllers" { RefServer "base_sim./base_sim./gazebo./controller_manager/list_controllers" } , RosServiceServer "/controller_manager/load_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/load_controller" } , RosServiceServer "/controller_manager/list_controller_types" { RefServer "base_sim./base_sim./gazebo./controller_manager/list_controller_types" } , RosServiceServer "/controller_manager/unload_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/unload_controller" } , RosServiceServer "/controller_manager/switch_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/switch_controller" } , RosServiceServer "/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" } , RosServiceServer "/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" } } } ) }
+		RosParameter  "/safety_distance_publisher_node/scan_filter_chain" { RefParameter "metacontrol_sim.safety_distance_publisher.safety_distance_publisher_node./safety_distance_publisher_node/scan_filter_chain" } } },
+	ComponentInterface { name imu NameSpace imu 
+	RosPublishers { 
+		RosPublisher "imu/data/accel/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/accel/parameter_descriptions" },
+		RosPublisher "imu/data/bias" { ns imu RefPublisher "imu_sim./imu./gazebo.data/bias" },
+		RosPublisher "imu/data" { ns imu RefPublisher "imu_sim./imu./gazebo.data" },
+		RosPublisher "imu/data/accel/parameter_updates" { ns imu RefPublisher "imu_sim./imu./gazebo.data/accel/parameter_updates" },
+		RosPublisher "imu/data/rate/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/rate/parameter_descriptions" },
+		RosPublisher "imu/data/yaw/parameter_updates" { ns imu RefPublisher "imu_sim./imu./gazebo.data/yaw/parameter_updates" },
+		RosPublisher "imu/data/yaw/parameter_descriptions" { ns imu RefPublisher "imu_sim./imu./gazebo.data/yaw/parameter_descriptions" } } 
+	RosSrvServers { 
+		RosServiceServer "imu/data/calibrate" { ns imu RefServer "imu_sim./imu./gazebo.data/calibrate" },
+		RosServiceServer "imu/data/yaw/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/yaw/set_parameters" },
+		RosServiceServer "imu/data/rate/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/rate/set_parameters" },
+		RosServiceServer "imu/data/accel/set_parameters" { ns imu RefServer "imu_sim./imu./gazebo.data/accel/set_parameters" } } 
+	RosParameters { 
+		RosParameter "imu/data/rate/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/offset" },
+		RosParameter "imu/data/accel/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/scale_error" },
+		RosParameter "imu/data/yaw/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/drift_frequency" },
+		RosParameter "imu/data/yaw/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/gaussian_noise" },
+		RosParameter "imu/data/rate/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/drift" },
+		RosParameter "imu/data/accel/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/gaussian_noise" },
+		RosParameter "imu/data/rate/gaussian_noise" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/gaussian_noise" },
+		RosParameter "imu/data/accel/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/drift" },
+		RosParameter "imu/data/accel/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/drift_frequency" },
+		RosParameter "imu/data/yaw/drift" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/drift" },
+		RosParameter "imu/data/yaw/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/offset" },
+		RosParameter "imu/data/rate/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/scale_error" },
+		RosParameter "imu/data/rate/drift_frequency" { ns imu RefParameter "imu_sim./imu./gazebo.data/rate/drift_frequency" },
+		RosParameter "imu/data/accel/offset" { ns imu RefParameter "imu_sim./imu./gazebo.data/accel/offset" },
+		RosParameter "imu/data/yaw/scale_error" { ns imu RefParameter "imu_sim./imu./gazebo.data/yaw/scale_error" } } } , 
+	ComponentInterface { name base_sim 
+	RosPublishers { 
+		RosPublisher "/gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates" },
+		RosPublisher "/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates" },
+		RosPublisher "/joint_states" { RefPublisher "base_sim./base_sim./gazebo./joint_states" },
+		RosPublisher "/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_updates" },
+		RosPublisher "/odom" { RefPublisher "base_sim./base_sim./gazebo./odom" },
+		RosPublisher "/gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_descriptions" },
+		RosPublisher "/gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/parameter_descriptions" },
+		RosPublisher "/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/parameter_descriptions" },
+		RosPublisher "/gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/parameter_descriptions" },
+		RosPublisher "/gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates" { RefPublisher "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates" } } 
+	RosSubscribers { 
+		RosSubscriber "/cmd_vel" { RefSubscriber "base_sim./base_sim./gazebo./cmd_vel" } } 
+	RosSrvServers { 
+		RosServiceServer "/gazebo_ros_control/pid_gains/front_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/front_left_wheel/set_parameters" },
+		RosServiceServer "/controller_manager/reload_controller_libraries" { RefServer "base_sim./base_sim./gazebo./controller_manager/reload_controller_libraries" },
+		RosServiceServer "/controller_manager/list_controllers" { RefServer "base_sim./base_sim./gazebo./controller_manager/list_controllers" },
+		RosServiceServer "/controller_manager/load_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/load_controller" },
+		RosServiceServer "/controller_manager/list_controller_types" { RefServer "base_sim./base_sim./gazebo./controller_manager/list_controller_types" },
+		RosServiceServer "/controller_manager/unload_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/unload_controller" },
+		RosServiceServer "/controller_manager/switch_controller" { RefServer "base_sim./base_sim./gazebo./controller_manager/switch_controller" },
+		RosServiceServer "/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" },
+		RosServiceServer "/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" } } } ) 
+
+}
