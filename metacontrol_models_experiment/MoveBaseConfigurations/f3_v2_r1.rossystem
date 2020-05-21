@@ -2,8 +2,15 @@ RosSystem { Name 'f3_v2_r1'  RosComponents (
     ComponentInterface { name move_base 
         RosParameters{
             RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value 25},
+            RosParameter 'planner_frequency' { RefParameter 'move_base.move_base.move_base.planner_frequency' value 5.0},
+            RosParameter 'global/update_frequency' { RefParameter 'move_base.move_base.move_base.global_costmap/update_frequency' value 5.0},
+            RosParameter 'local/update_frequency' { RefParameter 'move_base.move_base.move_base.local_costmap/update_frequency' value 12.5},
             RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_x' value 0.5},
-            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.local_costmap/inflater_layer/inflation_radius' value 0.3}
+            RosParameter 'max_vel_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_y' value 0.5},
+            RosParameter 'acc_lim_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_x' value 6.0},
+            RosParameter 'acc_lim_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_y' value 6.0},
+            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.local_costmap/inflater_layer/inflation_radius' value 0.3},
+            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.global_costmap/inflater_layer/inflation_radius' value 0.3}
     }})
     Parameters {
         Parameter { name qa_safety type Double value 0.0},
