@@ -1,7 +1,4 @@
 RosSystem { Name 'system'
-	Parameters {
-		Parameter { name qa_safety type Double },
-		Parameter { name qa_energy type Double }} 
 	RosComponents ( 
 	ComponentInterface { name move_base NameSpace move_base 
 	RosPublishers { 
@@ -64,7 +61,6 @@ RosSystem { Name 'system'
 		RosParameter "move_base/acc_lim_x" { ns move_base RefParameter "move_base.move_base.move_base.acc_lim_x"} , 
 		RosParameter "move_base/max_vel_x" { ns move_base RefParameter "move_base.move_base.move_base.max_vel_x"} , 
 		RosParameter "move_base/obstacle_range" { ns move_base RefParameter "move_base.move_base.move_base.obstacle_range"} , 
-		RosParameter "move_base/inflation_radius" { ns move_base RefParameter "move_base.move_base.move_base.inflation_radius"} , 
 		RosParameter "move_base/local_costmap/obstacles_layer/point_cloud/max_obstacle_height" { ns move_base RefParameter "move_base.move_base.move_base.local_costmap/obstacles_layer/point_cloud/max_obstacle_height"} , 
 		RosParameter "move_base/planner_patience" { ns move_base RefParameter "move_base.move_base.move_base.planner_patience"} , 
 		RosParameter "move_base/conservative_reset/reset_distance" { ns move_base RefParameter "move_base.move_base.move_base.conservative_reset/reset_distance"} , 
@@ -332,4 +328,7 @@ RosSystem { Name 'system'
 		RosServiceServer "/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" },
 		RosServiceServer "/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" } } } ) 
 
+	TopicConnections { TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "battery_load_control./cmd_vel" ) } , TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "base_sim./cmd_vel" ) } , TopicConnection "/scan_filtered" { From ( "laser_filter./scan_filtered" ) To ( "safety_distance_publisher./scan_filtered" ) } , TopicConnection "/odom" { From ( "base_sim./odom" ) To ( "battery_load_control./odom" ) } } Parameters {
+		Parameter { name qa_safety type Double },
+		Parameter { name qa_energy type Double }} 
 }
