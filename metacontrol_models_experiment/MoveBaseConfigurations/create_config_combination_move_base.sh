@@ -1,6 +1,7 @@
 #!/bin/sh
 qa_safety=0.0
 qa_energy=0.0
+global_path="../src-gen/"
 #for controller_frequency
 for i in 1 2 3
 do
@@ -23,7 +24,9 @@ do
 			if [ $k = 2 ]; then rad=0.65;fi
 			if [ $k = 3 ]; then rad=0.8;fi
 			system_name="f${i}_v${j}_r${k}"
-			file_name="${system_name}.rossystem"
+			relative_path=${system_name}/
+			mkdir -p "${global_path}${relative_path}"
+			file_name="${global_path}${relative_path}${system_name}.rossystem"
 			touch ${file_name}
 			echo "RosSystem { Name '${system_name}'  RosComponents (\n    ComponentInterface { name move_base \n        RosParameters{" > ${file_name}
 			echo "            RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
