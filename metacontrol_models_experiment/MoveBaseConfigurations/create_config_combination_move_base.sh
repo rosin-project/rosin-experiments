@@ -19,9 +19,9 @@ do
 		#for inflation_radius
 		for k in 1 2 3
 		do
-			if [ $k = 1 ]; then rad=0.3;fi
-			if [ $k = 2 ]; then rad=0.45;fi
-			if [ $k = 3 ]; then rad=0.6;fi
+			if [ $k = 1 ]; then rad=0.5;fi
+			if [ $k = 2 ]; then rad=0.65;fi
+			if [ $k = 3 ]; then rad=0.8;fi
 			system_name="f${i}_v${j}_r${k}"
 			file_name="${system_name}.rossystem"
 			touch ${file_name}
