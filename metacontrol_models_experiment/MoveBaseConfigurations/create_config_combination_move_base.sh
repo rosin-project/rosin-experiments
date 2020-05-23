@@ -1,6 +1,9 @@
-#!/bin/sh
-qa_safety=0.0
-qa_energy=0.0
+#!/usr/bin/env bash
+#min value for qa_safety
+qa_safety=(0.68 0.7 0.71 0.41 0.42 0.42 0.28 0.27 0.26 0.66 0.69 0.71 0.41 0.42 0.43 0.28 0.28 0.28 0.62 0.7 0.69 0.42 0.41 0.42 0.28 0.28 0.29)
+#max value for qa_energy
+qa_energy=( 0.34 0.33 0.33 0.48 0.49 0.49 0.73 0.76 0.7 0.38 0.36 0.38 0.48 0.57 0.49 0.67 0.78 0.66 0.39 0.4 0.4 0.55 0.59 0.59 0.78 0.74 0.74)
+count=0
 echo "configs: [" > rosgraph_manipulator_config.yaml
 global_path="../src-gen/"
 #for controller_frequency
@@ -29,23 +32,24 @@ do
 			mkdir -p "${global_path}${relative_path}"
 			file_name="${global_path}${relative_path}${system_name}.rossystem"
 			touch ${file_name}
-			echo "RosSystem { Name '${system_name}'  RosComponents (\n    ComponentInterface { name move_base \n        RosParameters{" > ${file_name}
-			echo "            RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
-			echo "            RosParameter 'planner_frequency' { RefParameter 'move_base.move_base.move_base.planner_frequency' value $freq_f5}," >> ${file_name}
-			echo "            RosParameter 'global/update_frequency' { RefParameter 'move_base.move_base.move_base.global_costmap/update_frequency' value $freq_f5}," >> ${file_name}
-			echo "            RosParameter 'local/update_frequency' { RefParameter 'move_base.move_base.move_base.local_costmap/update_frequency' value $freq_f2}," >> ${file_name}
-			echo "            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_x' value $vel}," >> ${file_name}
-			echo "            RosParameter 'max_vel_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_y' value $vel}," >> ${file_name}
-			echo "            RosParameter 'acc_lim_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_x' value $acc}," >> ${file_name}
-			echo "            RosParameter 'acc_lim_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_y' value $acc}," >> ${file_name}
-			echo "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.local_costmap/inflater_layer/inflation_radius' value $rad}," >> ${file_name}
-			echo "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.global_costmap/inflater_layer/inflation_radius' value $rad}" >> ${file_name}
-			echo "    }})" >> ${file_name}
-			echo "    Parameters {" >> ${file_name}
-			echo "        Parameter { name qa_safety type Double value $qa_safety}," >> ${file_name}
-			echo "        Parameter { name qa_energy type Double value $qa_energy}}" >> ${file_name}
-			echo "    }" >> ${file_name}
+			echo -e "RosSystem { Name '${system_name}'  RosComponents (\n    ComponentInterface { name move_base \n        RosParameters{" > ${file_name}
+			echo -e "            RosParameter 'controller_frequency' { RefParameter 'move_base.move_base.move_base.controller_frequency' value $freq}," >> ${file_name}
+			echo -e "            RosParameter 'planner_frequency' { RefParameter 'move_base.move_base.move_base.planner_frequency' value $freq_f5}," >> ${file_name}
+			echo -e "            RosParameter 'global/update_frequency' { RefParameter 'move_base.move_base.move_base.global_costmap/update_frequency' value $freq_f5}," >> ${file_name}
+			echo -e "            RosParameter 'local/update_frequency' { RefParameter 'move_base.move_base.move_base.local_costmap/update_frequency' value $freq_f2}," >> ${file_name}
+			echo -e "            RosParameter 'max_vel_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_x' value $vel}," >> ${file_name}
+			echo -e "            RosParameter 'max_vel_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/max_vel_y' value $vel}," >> ${file_name}
+			echo -e "            RosParameter 'acc_lim_x' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_x' value $acc}," >> ${file_name}
+			echo -e "            RosParameter 'acc_lim_y' { RefParameter 'move_base.move_base.move_base.TrajectoryPlannerROS/acc_lim_y' value $acc}," >> ${file_name}
+			echo -e "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.local_costmap/inflater_layer/inflation_radius' value $rad}," >> ${file_name}
+			echo -e "            RosParameter 'inflation_radius' { RefParameter 'move_base.move_base.move_base.global_costmap/inflater_layer/inflation_radius' value $rad}" >> ${file_name}
+			echo -e "    }})" >> ${file_name}
+			echo -e "    Parameters {" >> ${file_name}
+			echo -e "        Parameter { name qa_safety type Double value ${qa_safety[$count]}}," >> ${file_name}
+			echo -e "        Parameter { name qa_energy type Double value ${qa_energy[$count]}}}" >> ${file_name}
+			echo -e "    }" >> ${file_name}
 			echo "'${system_name}'," >>  rosgraph_manipulator_config.yaml
+			count=$((count+1))
 		done
 	done
 done
