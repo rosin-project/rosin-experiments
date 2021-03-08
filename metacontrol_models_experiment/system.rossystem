@@ -328,7 +328,8 @@ RosSystem { Name 'system'
 		RosServiceServer "/gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_right_wheel/set_parameters" },
 		RosServiceServer "/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" { RefServer "base_sim./base_sim./gazebo./gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters" } } } ) 
 
-	TopicConnections { TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "battery_load_control./cmd_vel" ) } , TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "base_sim./cmd_vel" ) } , TopicConnection "/scan_filtered" { From ( "laser_filter./scan_filtered" ) To ( "safety_distance_publisher./scan_filtered" ) } , TopicConnection "/odom" { From ( "base_sim./odom" ) To ( "battery_load_control./odom" ) } } Parameters {
-		Parameter { name qa_safety type Double },
-		Parameter { name qa_energy type Double }} 
+	TopicConnections { TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "battery_load_control./cmd_vel" ) } , TopicConnection "/cmd_vel" { From ( "move_base./cmd_vel" ) To ( "base_sim./cmd_vel" ) } , TopicConnection "/scan_filtered" { From ( "laser_filter./scan_filtered" ) To ( "safety_distance_publisher./scan_filtered" ) } , TopicConnection "/odom" { From ( "base_sim./odom" ) To ( "battery_load_control./odom" ) } } 
+	Parameters {
+		Parameter { name qa_safety type Double},
+		Parameter { name qa_energy type Double}} 
 }

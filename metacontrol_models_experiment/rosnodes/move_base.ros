@@ -1,8 +1,8 @@
-PackageSet { package { 
-  CatkinPackage move_base { artifact {
+PackageSet { 
+  CatkinPackage move_base {
     Artifact move_base {
-      node Node { name move_base
-        serviceserver {
+      Node { name move_base
+        ServiceServers {
           ServiceServer { name 'TrajectoryPlannerROS/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name 'global_costmap/obstacles_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name 'local_costmap/obstacles_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
@@ -15,7 +15,7 @@ PackageSet { package {
           ServiceServer { name 'local_costmap/inflater_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name 'NavfnROS/make_plan' service 'nav_msgs.GetPlan'},
           ServiceServer { name 'global_costmap/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
-        publisher {
+        Publishers {
           Publisher { name 'global_costmap/inflater_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name 'NavfnROS/plan' message 'nav_msgs.Path'},
           Publisher { name 'local_costmap/inflater_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
@@ -47,16 +47,16 @@ PackageSet { package {
           Publisher { name 'global_costmap/costmap_updates' message 'map_msgs.OccupancyGridUpdate'},
           Publisher { name 'local_costmap/obstacles_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name 'global_costmap/static_layer/parameter_updates' message 'dynamic_reconfigure.Config'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/front/scan' message 'sensor_msgs.LaserScan'},
           Subscriber { name '/move_base_simple/goal' message 'geometry_msgs.PoseStamped'},
           Subscriber { name 'local_costmap/footprint' message 'geometry_msgs.PolygonStamped'},
           Subscriber { name '/map' message 'nav_msgs.OccupancyGrid'},
           Subscriber { name 'global_costmap/footprint' message 'geometry_msgs.PolygonStamped'},
           Subscriber { name '/odometry/filtered' message 'nav_msgs.Odometry'}}
-        actionserver {
+        ActionServers {
           ActionServer { name 'move_base' action 'move_base_msgs.MoveBase'}}
-		parameter { 
+		Parameters { 
 		  Parameter { name controller_frequency type Integer {default 20}},
 		  Parameter { name planner_frequency type Double {default 7.5}},
 		  Parameter { name acc_lim_x type Double {default 5.0}},
@@ -185,7 +185,7 @@ PackageSet { package {
           Parameter { name 'TrajectoryPlannerROS/restore_defaults' type Boolean },
           Parameter { name 'global_costmap/origin_x' type Double },
           Parameter { name 'base_local_planner' type String },
-          Parameter { name 'local_costmap/plugins' type Struc {
+          Parameter { name 'local_costmap/plugins' type Struct {
             'type' String,
             'name' String}},
           Parameter { name 'local_costmap/obstacles_layer/scan/obstacle_range' type Double },
@@ -199,7 +199,7 @@ PackageSet { package {
           Parameter { name 'local_costmap/obstacles_layer/scan/clearing' type Boolean },
           Parameter { name 'local_costmap/obstacles_layer/scan/topic' type String },
           Parameter { name 'global_costmap/robot_base_frame' type String },
-          Parameter { name 'global_costmap/plugins' type Struc {
+          Parameter { name 'global_costmap/plugins' type Struct {
             'type' String,
             'name' String}},
           Parameter { name 'local_costmap/obstacles_layer/scan/sensor_frame' type String },
@@ -223,4 +223,4 @@ PackageSet { package {
           Parameter { name 'TrajectoryPlannerROS/heading_scoring_timestep' type Double },
           Parameter { name 'local_costmap/obstacles_layer/point_cloud/topic' type String },
           Parameter { name 'global_costmap/inflater_layer/inflate_unknown' type Boolean }}
-}}}}}}
+}}}}

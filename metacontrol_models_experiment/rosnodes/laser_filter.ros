@@ -1,19 +1,19 @@
-PackageSet { package { 
-  CatkinPackage laser_filters { artifact {    
+PackageSet { 
+  CatkinPackage laser_filters {    
     Artifact scan_to_scan_filter_chain {
-      node Node { name laser_filter
-        serviceserver {
+      Node { name laser_filter
+        ServiceServers {
           ServiceServer { name 'shadows/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
-        publisher {
+        Publishers {
           Publisher { name 'shadows/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
           Publisher { name '/scan_filtered' message 'sensor_msgs.LaserScan'},
           Publisher { name 'shadows/parameter_updates' message 'dynamic_reconfigure.Config'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/front/scan' message 'sensor_msgs.LaserScan'}}
-        parameter {
-		  Parameter { name 'scan_filter_chain' type Struc {
+        Parameters {
+		  Parameter { name 'scan_filter_chain' type Struct {
             'type' String,
-            'params' Struc{
+            'params' Struct{
               'lower_angle' Double,
               'upper_angle' Double},
             'name' String}},
@@ -22,4 +22,4 @@ PackageSet { package {
           Parameter { name 'shadows/neighbors' type Integer },
           Parameter { name 'shadows/max_angle' type Double },
           Parameter { name 'shadows/window' type Integer }}
-}}}}}}
+}}}}

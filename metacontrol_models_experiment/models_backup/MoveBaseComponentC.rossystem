@@ -1,7 +1,7 @@
 RosSystem { Name 'MoveBaseComponentC' 
 	RosComponents ( ComponentInterface { name move_base})
 	Parameters {
-		Parameter { name move_base_config type Struc 
+		Parameter { name move_base_config type Struct 
 			{controller_frequency Integer {default 20},
 			planner_frequency Double {default 7.5},
 			acc_lim_x Double {default 5.0},

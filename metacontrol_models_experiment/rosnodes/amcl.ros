@@ -1,8 +1,8 @@
-PackageSet { package {
-	CatkinPackage amcl { artifact {
+PackageSet {
+	CatkinPackage amcl {
 		Artifact  amcl {
-			node Node { name acml 
-			parameter { 
+			Node { name acml 
+			Parameters { 
 				Parameter { name use_map_topic type Boolean},
 				Parameter { name odom_model_type type String},
 				Parameter { name odom_alpha5 type Double},
@@ -40,4 +40,4 @@ PackageSet { package {
 				Parameter { name initial_pose_a type Double},
 				Parameter { name receive_map_topic type Boolean},
 				Parameter { name first_map_only type Boolean}
-		}}}}}}}
+		}}}}}

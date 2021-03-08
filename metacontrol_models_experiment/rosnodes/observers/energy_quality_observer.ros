@@ -1,8 +1,8 @@
-PackageSet { package { 
-  CatkinPackage rosgraph_monitor { artifact {
+PackageSet { 
+  CatkinPackage rosgraph_monitor {
     Artifact energy_quality_observer {
-      node Node { name energy_quality_observer_node
-        publisher { 
+      Node { name energy_quality_observer_node
+        Publishers { 
           Publisher { name '/diagnostics' message 'diagnostic_msgs.DiagnosticArray'}}
-        subscriber {
-          Subscriber { name '/power_load' message 'std_msgs.Float32'}}}}}}}}
+        Subscribers {
+          Subscriber { name '/power_load' message 'std_msgs.Float32'}}}}}}
