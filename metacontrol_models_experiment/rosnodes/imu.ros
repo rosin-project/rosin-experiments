@@ -1,13 +1,13 @@
-PackageSet { package {
-	CatkinPackage imu_sim { artifact {
+PackageSet {
+	CatkinPackage imu_sim {
     Artifact /imu {
-      node Node { name /gazebo
-        serviceserver {
+      Node { name /gazebo
+        ServiceServers {
           ServiceServer { name 'data/calibrate' service 'std_srvs.Empty'},
           ServiceServer { name 'data/yaw/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name 'data/rate/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name 'data/accel/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
-        publisher {
+        Publishers {
           Publisher { name 'data/accel/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
           Publisher { name 'data/bias' message 'sensor_msgs.Imu'},
           Publisher { name 'data' message 'sensor_msgs.Imu'},
@@ -15,7 +15,7 @@ PackageSet { package {
           Publisher { name 'data/rate/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
           Publisher { name 'data/yaw/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name 'data/yaw/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'}}
-        parameter {
+        Parameters {
           Parameter { name 'data/rate/offset' type Double },
           Parameter { name 'data/accel/scale_error' type Double },
           Parameter { name 'data/yaw/drift_frequency' type Double },
@@ -31,4 +31,4 @@ PackageSet { package {
           Parameter { name 'data/rate/drift_frequency' type Double },
           Parameter { name 'data/accel/offset' type Double },
           Parameter { name 'data/yaw/scale_error' type Double }
-}}}}}}}
+}}}}}

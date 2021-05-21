@@ -1,14 +1,14 @@
-PackageSet { package { 
-  CatkinPackage metacontrol_sim { artifact {    
+PackageSet { 
+  CatkinPackage metacontrol_sim {    
   	Artifact battery_load_control_node {
-      node Node { name battery_load_control_node
-        publisher {
+      Node { name battery_load_control_node
+        Publishers {
           Publisher { name '/power_load' message 'std_msgs.Float32'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/odom' message 'nav_msgs.Odometry'},
           Subscriber { name '/cmd_vel' message 'geometry_msgs.Twist'},
           Subscriber { name '/imu/data' message 'sensor_msgs.Imu'}}
-        parameter {
+        Parameters {
       	  Parameter { name 'min_power_load' type Double },
           Parameter { name 'max_power_load' type Double },
           Parameter { name 'odom_topic' type String },
@@ -19,4 +19,4 @@ PackageSet { package {
           Parameter { name 'controller_frequency' type Double },
           Parameter { name 'const_acceleration' type Double },
           Parameter { name 'const_frequency' type Double }}
-}}}}}}
+}}}}

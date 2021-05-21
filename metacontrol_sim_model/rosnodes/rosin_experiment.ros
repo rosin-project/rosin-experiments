@@ -1,20 +1,20 @@
-PackageSet { package { 
-  CatkinPackage rosin_sim { artifact {
+PackageSet { 
+  CatkinPackage rosin_sim {
     Artifact /robot_state_publisher {
-      node Node { name /robot_state_publisher
+      Node { name /robot_state_publisher
 
-        subscriber {
+        Subscribers {
           Subscriber { name '/joint_states' message 'sensor_msgs.JointState'}}}},
     Artifact /rviz {
-      node Node { name /rviz
+      Node { name /rviz
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/rviz/reload_shaders' service 'std_srvs.Empty'}}
-        publisher {
+        Publishers {
           Publisher { name '/clicked_point' message 'geometry_msgs.PointStamped'},
           Publisher { name '/initialpose' message 'geometry_msgs.PoseWithCovarianceStamped'},
           Publisher { name '/move_base_simple/goal' message 'geometry_msgs.PoseStamped'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/move_base/NavfnROS/plan' message 'nav_msgs.Path'},
           Subscriber { name '/map_updates' message 'map_msgs.OccupancyGridUpdate'},
           Subscriber { name '/move_base/global_costmap/costmap' message 'nav_msgs.OccupancyGrid'},
@@ -23,85 +23,85 @@ PackageSet { package {
           Subscriber { name '/move_base/global_costmap/costmap_updates' message 'map_msgs.OccupancyGridUpdate'},
           Subscriber { name '/odom' message 'nav_msgs.Odometry'}}}},
     Artifact /battery_load_control_node {
-      node Node { name /battery_load_control_node
+      Node { name /battery_load_control_node
 
-        publisher {
+        Publishers {
           Publisher { name '/power_load' message 'std_msgs.Float32'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/odom' message 'nav_msgs.Odometry'},
           Subscriber { name '/cmd_vel' message 'geometry_msgs.Twist'},
           Subscriber { name '/imu/data' message 'sensor_msgs.Imu'}}}},
     Artifact /map_server {
-      node Node { name /map_server
+      Node { name /map_server
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/static_map' service 'nav_msgs.GetMap'}}
-        publisher {
+        Publishers {
           Publisher { name '/map_metadata' message 'nav_msgs.MapMetaData'},
           Publisher { name '/map' message 'nav_msgs.OccupancyGrid'}}}},
     Artifact /rosgraph_manipulator_node {
-      node Node { name /rosgraph_manipulator_node
+      Node { name /rosgraph_manipulator_node
 
-        actionserver {
+        ActionServers {
           ActionServer { name '/rosgraph_manipulator_action_server/' action 'metacontrol_msgs.MvpReconfiguration'}}
-        actionclient {
+        ActionClients {
           ActionClient { name '/move_base/' action 'move_base_msgs.MoveBase'}}}},
     Artifact /laser_filter {
-      node Node { name /laser_filter
+      Node { name /laser_filter
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/laser_filter/shadows/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
-        publisher {
+        Publishers {
           Publisher { name '/laser_filter/shadows/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
           Publisher { name '/scan_filtered' message 'sensor_msgs.LaserScan'},
           Publisher { name '/laser_filter/shadows/parameter_updates' message 'dynamic_reconfigure.Config'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/front/scan' message 'sensor_msgs.LaserScan'}}}},
     Artifact /cmd_vel_relay {
-      node Node { name /cmd_vel_relay
+      Node { name /cmd_vel_relay
 
-        publisher {
+        Publishers {
           Publisher { name '/ridgeback_velocity_controller/cmd_vel' message 'geometry_msgs.Twist'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/cmd_vel' message 'geometry_msgs.Twist'}}}},
     Artifact /fake_localization {
-      node Node { name /fake_localization
+      Node { name /fake_localization
 
-        publisher {
+        Publishers {
           Publisher { name '/amcl_pose' message 'geometry_msgs.PoseWithCovarianceStamped'},
           Publisher { name '/particlecloud' message 'geometry_msgs.PoseArray'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/ground_truth/state' message 'nav_msgs.Odometry'},
           Subscriber { name '/initialpose' message 'geometry_msgs.PoseWithCovarianceStamped'}}}},
     Artifact /ekf_localization {
-      node Node { name /ekf_localization
+      Node { name /ekf_localization
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/ekf_localization/toggle' service 'robot_localization.ToggleFilterProcessing'},
           ServiceServer { name '/set_pose' service 'robot_localization.SetPose'},
           ServiceServer { name '/ekf_localization/enable' service 'std_srvs.Empty'}}
-        publisher {
+        Publishers {
           Publisher { name '/diagnostics' message 'diagnostic_msgs.DiagnosticArray'},
           Publisher { name '/odometry/filtered' message 'nav_msgs.Odometry'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/imu/data' message 'sensor_msgs.Imu'},
           Subscriber { name '/set_pose' message 'geometry_msgs.PoseWithCovarianceStamped'},
           Subscriber { name '/ridgeback_velocity_controller/odom' message 'nav_msgs.Odometry'}}}},
     Artifact /safety_distance_publisher_node {
-      node Node { name /safety_distance_publisher_node
+      Node { name /safety_distance_publisher_node
 
-        publisher {
+        Publishers {
           Publisher { name '/d_obstacle' message 'std_msgs.Float32'},
           Publisher { name '/d_inflation' message 'std_msgs.Float32'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/scan_filtered' message 'sensor_msgs.LaserScan'}}}},
     Artifact /controller_spawner {
-      node Node { name /controller_spawner
+      Node { name /controller_spawner
 }},
     Artifact /move_base {
-      node Node { name /move_base
+      Node { name /move_base
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/move_base/TrajectoryPlannerROS/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name '/move_base/global_costmap/obstacles_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name '/move_base/local_costmap/obstacles_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
@@ -114,7 +114,7 @@ PackageSet { package {
           ServiceServer { name '/move_base/local_costmap/inflater_layer/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name '/move_base/NavfnROS/make_plan' service 'nav_msgs.GetPlan'},
           ServiceServer { name '/move_base/global_costmap/set_parameters' service 'dynamic_reconfigure.Reconfigure'}}
-        publisher {
+        Publishers {
           Publisher { name '/move_base/global_costmap/inflater_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name '/move_base/NavfnROS/plan' message 'nav_msgs.Path'},
           Publisher { name '/move_base/local_costmap/inflater_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
@@ -146,31 +146,31 @@ PackageSet { package {
           Publisher { name '/move_base/global_costmap/costmap_updates' message 'map_msgs.OccupancyGridUpdate'},
           Publisher { name '/move_base/local_costmap/obstacles_layer/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name '/move_base/global_costmap/static_layer/parameter_updates' message 'dynamic_reconfigure.Config'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/front/scan' message 'sensor_msgs.LaserScan'},
           Subscriber { name '/move_base_simple/goal' message 'geometry_msgs.PoseStamped'},
           Subscriber { name '/move_base/local_costmap/footprint' message 'geometry_msgs.PolygonStamped'},
           Subscriber { name '/map' message 'nav_msgs.OccupancyGrid'},
           Subscriber { name '/move_base/global_costmap/footprint' message 'geometry_msgs.PolygonStamped'},
           Subscriber { name '/odometry/filtered' message 'nav_msgs.Odometry'}}
-        actionserver {
+        ActionServers {
           ActionServer { name '/move_base/' action 'move_base_msgs.MoveBase'}}}},
     Artifact /rosgraph_monitor_node {
-      node Node { name /rosgraph_monitor_node
+      Node { name /rosgraph_monitor_node
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/load_observer' service 'controller_manager_msgs.LoadController'},
           ServiceServer { name '/active_observers' service 'controller_manager_msgs.ListControllerTypes'},
           ServiceServer { name '/list_observers' service 'controller_manager_msgs.ListControllerTypes'},
           ServiceServer { name '/unload_observer' service 'controller_manager_msgs.UnloadController'}}
-        publisher {
+        Publishers {
           Publisher { name '/diagnostics' message 'diagnostic_msgs.DiagnosticArray'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/speed' message 'std_msgs.Int32'}}}},
     Artifact /gazebo {
-      node Node { name /gazebo
+      Node { name /gazebo
 
-        serviceserver {
+        ServiceServers {
           ServiceServer { name '/gazebo/get_world_properties' service 'gazebo_msgs.GetWorldProperties'},
           ServiceServer { name '/gazebo/spawn_sdf_model' service 'gazebo_msgs.SpawnModel'},
           ServiceServer { name '/gazebo/delete_light' service 'gazebo_msgs.DeleteLight'},
@@ -220,7 +220,7 @@ PackageSet { package {
           ServiceServer { name '/gazebo_ros_control/pid_gains/rear_left_wheel/set_parameters' service 'dynamic_reconfigure.Reconfigure'},
           ServiceServer { name '/gazebo/clear_joint_forces' service 'gazebo_msgs.JointRequest'},
           ServiceServer { name '/gazebo/set_model_configuration' service 'gazebo_msgs.SetModelConfiguration'}}
-        publisher {
+        Publishers {
           Publisher { name '/gazebo_ros_control/pid_gains/front_left_wheel/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name '/gazebo_ros_control/pid_gains/rear_left_wheel/parameter_updates' message 'dynamic_reconfigure.Config'},
           Publisher { name '/mobile_base/commands/charge_level' message 'std_msgs.Float64'},
@@ -248,15 +248,15 @@ PackageSet { package {
           Publisher { name '/front/scan' message 'sensor_msgs.LaserScan'},
           Publisher { name '/imu/data/yaw/parameter_descriptions' message 'dynamic_reconfigure.ConfigDescription'},
           Publisher { name '/gazebo_ros_control/pid_gains/front_right_wheel/parameter_updates' message 'dynamic_reconfigure.Config'}}
-        subscriber {
+        Subscribers {
           Subscriber { name '/ridgeback_velocity_controller/cmd_vel' message 'geometry_msgs.Twist'},
           Subscriber { name '/gazebo/set_link_state' message 'gazebo_msgs.LinkState'},
           Subscriber { name '/gazebo/set_model_state' message 'gazebo_msgs.ModelState'},
           Subscriber { name '/cmd_vel' message 'geometry_msgs.Twist'}}}},
     Artifact parameters_node {
-      node Node { name parameters_node
+      Node { name parameters_node
 
-        parameter {
+        Parameters {
           Parameter { name '/battery_load_control_node/min_power_load' type Double },
           Parameter { name '/ekf_localization/odom0_differential' type Boolean },
           Parameter { name '/move_base/local_costmap/obstacles_layer/point_cloud/max_obstacle_height' type Double },
@@ -291,9 +291,9 @@ PackageSet { package {
           Parameter { name '/move_base/restore_defaults' type Boolean },
           Parameter { name '/move_base/base_global_planner' type String },
           Parameter { name '/ridgeback_velocity_controller/front_left_wheel_joint' type String },
-          Parameter { name '/laser_filter/scan_filter_chain' type Struc {
+          Parameter { name '/laser_filter/scan_filter_chain' type Struct {
             'type' String,
-            'params' Struc{
+            'params' Struct{
               'lower_angle' Double,
               'upper_angle' Double},
             'name' String}},
@@ -463,9 +463,9 @@ PackageSet { package {
           Parameter { name '/move_base/global_costmap/inflater_layer/enabled' type Boolean },
           Parameter { name '/ridgeback_velocity_controller/angular/z/max_velocity' type Double },
           Parameter { name '/move_base/global_costmap/publish_voxel_map' type Boolean },
-          Parameter { name '/safety_distance_publisher_node/scan_filter_chain' type Struc {
+          Parameter { name '/safety_distance_publisher_node/scan_filter_chain' type Struct {
             'type' String,
-            'params' Struc{
+            'params' Struct{
               'lower_angle' Double,
               'upper_angle' Double},
             'name' String}},
@@ -490,7 +490,7 @@ PackageSet { package {
           Parameter { name '/gazebo/cfm' type Double },
           Parameter { name '/battery_load_control_node/cmd_vel_topic' type String },
           Parameter { name '/move_base/base_local_planner' type String },
-          Parameter { name '/move_base/local_costmap/plugins' type Struc {
+          Parameter { name '/move_base/local_costmap/plugins' type Struct {
             'type' String,
             'name' String}},
           Parameter { name '/battery_load_control_node/controller_frequency' type Double },
@@ -512,7 +512,7 @@ PackageSet { package {
           Parameter { name '/move_base/local_costmap/obstacles_layer/scan/topic' type String },
           Parameter { name '/battery_load_control_node/const_acceleration' type Double },
           Parameter { name '/move_base/global_costmap/robot_base_frame' type String },
-          Parameter { name '/move_base/global_costmap/plugins' type Struc {
+          Parameter { name '/move_base/global_costmap/plugins' type Struct {
             'type' String,
             'name' String}},
           Parameter { name '/move_base/local_costmap/obstacles_layer/scan/sensor_frame' type String },
@@ -550,4 +550,4 @@ PackageSet { package {
           Parameter { name '/battery_load_control_node/const_frequency' type Double },
           Parameter { name '/move_base/local_costmap/obstacles_layer/point_cloud/topic' type String },
           Parameter { name '/move_base/global_costmap/inflater_layer/inflate_unknown' type Boolean }}}}
-}}}}
+}}

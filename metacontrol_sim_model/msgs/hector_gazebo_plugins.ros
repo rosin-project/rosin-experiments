@@ -1,6 +1,5 @@
-PackageSet{package{
-    Package hector_gazebo_plugins{ spec { 
+PackageSet{
+    Package hector_gazebo_plugins{ Specs { 
       ServiceSpec SetBias{ request { "geometry_msgs.Vector3" bias } response {  } }
     }}
-  }
 }

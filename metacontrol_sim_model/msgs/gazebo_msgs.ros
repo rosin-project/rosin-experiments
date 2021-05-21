@@ -1,5 +1,5 @@
-PackageSet{package{
-    Package gazebo_msgs{ spec { 
+PackageSet{
+    Package gazebo_msgs{ Specs {
       TopicSpec ContactState{ message { string info string collision1_name string collision2_name "geometry_msgs.Wrench"[] wrenches "geometry_msgs.Wrench" total_wrench "geometry_msgs.Vector3"[] contact_positions "geometry_msgs.Vector3"[] contact_normals float64[] depths }},
       TopicSpec ContactsState{ message { Header header "gazebo_msgs.ContactState"[] states }},
       TopicSpec LinkState{ message { string link_name "geometry_msgs.Pose" pose "geometry_msgs.Twist" twist string reference_frame }},
@@ -33,5 +33,4 @@ PackageSet{package{
       ServiceSpec SetPhysicsProperties{ request { float64 time_step float64 max_update_rate "geometry_msgs.Vector3" gravity "gazebo_msgs.ODEPhysics" ode_config } response { bool success string status_message } },
       ServiceSpec SpawnModel{ request { string model_name string model_xml string robot_namespace "geometry_msgs.Pose" initial_pose string reference_frame } response { bool success string status_message } }
     }}
-  }
 }
