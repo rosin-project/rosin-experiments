@@ -1,10 +1,9 @@
-PackageSet{package{
-    Package brass_gazebo_battery{ spec { 
+PackageSet{
+    Package brass_gazebo_battery{ Specs { 
       ServiceSpec SetCharge{ request { float64 charge } response { bool result } },
       ServiceSpec SetCharging{ request { bool charging } response { bool result } },
       ServiceSpec SetChargingRate{ request { float64 charge_rate } response { bool result } },
       ServiceSpec SetCoef{ request { float64 constant_coef float64 linear_coef } response { bool result } },
       ServiceSpec SetLoad{ request { float64 power_load } response { bool result } }
     }}
-  }
 }

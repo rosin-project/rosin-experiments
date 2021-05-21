@@ -1,8 +1,7 @@
-PackageSet{package{
-    Package metacontrol_msgs{ spec { 
+PackageSet{
+    Package metacontrol_msgs{ Specs {
       TopicSpec GraphManipulationMessage{ message { int8 REQUEST_MISSING=-1 int8 REQUEST_YUMI_CONFIG_1ARM=1 int8 REQUEST_DISPLACEMENT_NODE=2 int8 REQUEST_TAG_CALIBRATION_NODE=3 int8 REQUEST_CAMERA_CONFIG1=4 int8 REQUEST_CAMERA_CONFIG2=5 int8 REQUEST_TAG_DETECTOR=6 int8 REQUEST_SAFE_SHUTDOWN=100 int8 RECONFIGURATION_OK=1 int8 RECONFIGURATION_FAILED=0 int8 RECONFIGURATION_UNKNOWN=-1 int8 GENERAL_ERROR=-2 }},
       TopicSpec SystemState{ message { uint8 OK=1 uint8 ERROR=99 Header header uint8 tag_detection_status uint8 camera_status uint8 yumi_status }},
       ActionSpec MvpReconfiguration {}
     }}
-  }
 }

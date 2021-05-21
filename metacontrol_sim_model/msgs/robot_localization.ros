@@ -1,5 +1,5 @@
-PackageSet{package{
-    Package robot_localization{ spec { 
+PackageSet{
+    Package robot_localization{ Specs { 
       ServiceSpec FromLL{ request { "geographic_msgs.GeoPoint" ll_point } response { "geometry_msgs.Point" map_point } },
       ServiceSpec GetState{ request { time time_stamp string frame_id } response { float64[] state float64[] covariance } },
       ServiceSpec SetDatum{ request { "geographic_msgs.GeoPose" geo_pose } response {  } },
@@ -7,5 +7,4 @@ PackageSet{package{
       ServiceSpec ToLL{ request { "geometry_msgs.Point" map_point } response { "geographic_msgs.GeoPoint" ll_point } },
       ServiceSpec ToggleFilterProcessing{ request { bool on } response { bool status } }
     }}
-  }
 }

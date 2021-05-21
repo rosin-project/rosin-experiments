@@ -1,5 +1,5 @@
-PackageSet{package{
-    Package geographic_msgs{ spec { 
+PackageSet{
+    Package geographic_msgs{ Specs { 
       TopicSpec BoundingBox{ message { GeoPoint min_pt GeoPoint max_pt }},
       TopicSpec GeoPath{ message { "std_msgs.Header" header "geographic_msgs.GeoPoseStamped"[] poses }},
       TopicSpec GeoPoint{ message { float64 latitude float64 longitude float64 altitude }},
@@ -19,5 +19,4 @@ PackageSet{package{
       ServiceSpec GetRoutePlan{ request { "uuid_msgs.UniqueID" network "uuid_msgs.UniqueID" start "uuid_msgs.UniqueID" goal } response { bool success string status RoutePath plan } },
       ServiceSpec UpdateGeographicMap{ request { GeographicMapChanges updates } response { bool success string status } }
     }}
-  }
 }

@@ -1,11 +1,11 @@
 RosSystem { Name 'MoveBaseComponentB'  
 	RosComponents ( ComponentInterface { name move_base})
 	Parameters {
-		Parameter { name 'move_base/controller_frequency' type Integer {default 20} value 15},
-		Parameter { name 'move_base/planner_frequency' type Double {default 7.5} value 5},
-		Parameter { name 'move_base/acc_lim_x' type Double {default 5.0} value 2.5},
-		Parameter { name 'move_base/max_vel_x' type Double {default 0.5} value 0.3},
-		Parameter { name 'move_base/obstacle_range' type Integer {default 10} value 8},
-		Parameter { name 'move_base/inflation_radius' type Double {default 0.35} value 0.25}
+		Parameter { name 'move_base/controller_frequency' type Integer default 20 value 15},
+		Parameter { name 'move_base/planner_frequency' type Double default 7.5 value 5},
+		Parameter { name 'move_base/acc_lim_x' type Double default 5.0 value 2.5},
+		Parameter { name 'move_base/max_vel_x' type Double default 0.5 value 0.3},
+		Parameter { name 'move_base/obstacle_range' type Integer default 10 value 8},
+		Parameter { name 'move_base/inflation_radius' type Double default 0.35 value 0.25}
 	}
 } 

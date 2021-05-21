@@ -57,11 +57,11 @@ PackageSet {
         ActionServers {
           ActionServer { name 'move_base' action 'move_base_msgs.MoveBase'}}
 		Parameters { 
-		  Parameter { name controller_frequency type Integer {default 20}},
-		  Parameter { name planner_frequency type Double {default 7.5}},
-		  Parameter { name acc_lim_x type Double {default 5.0}},
-		  Parameter { name max_vel_x type Double {default 0.5}},
-		  Parameter { name obstacle_range type Integer {default 10}},
+		  Parameter { name controller_frequency type Integer default 20},
+		  Parameter { name planner_frequency type Double default 7.5},
+		  Parameter { name acc_lim_x type Double default 5.0},
+		  Parameter { name max_vel_x type Double default 0.5},
+		  Parameter { name obstacle_range type Integer default 10},
 		  Parameter { name 'local_costmap/obstacles_layer/point_cloud/max_obstacle_height' type Double },
           Parameter { name 'planner_patience' type Double },
           Parameter { name 'conservative_reset/reset_distance' type Double },
